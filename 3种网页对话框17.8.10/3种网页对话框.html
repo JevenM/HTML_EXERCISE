@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对话框</title>
+	<script type="text/javascript">
+	function openNewWindow(szMethod){
+		if(szMethod == "modal"){
+			window.showModalDialog("ch3_25_2.html",myform.txt,"dialogTop:100px;dialogLeft:100px;dialogWidth:200px;dialogHeight:200px;scroll:1;status:0;");
+		}
+		else if(szMethod == "modeless"){
+			window.showModelessDialog("ch3_25_2.html",myform.txt,"dialogTop:100px;dialogLeft:100px;dialogWidth:200px;dialogHeight:200px;scroll:1;status:0;");
+		}
+		else {
+			window.open("ch3_25_1.html","subWin");
+		}
+	}
+	</script>
+</head>
+<body>
+	<form name="myform">
+		<input type="button" name="" value="window.open" onclick="openNewWindow('normal');"><br>
+		<input type="button" name="" value="showModalDialog" onclick="openNewWindow('modal');"><br>
+		<input type="button" name="" value="showModelessDialog" onclick="openNewWindow('modeless');"><br>
+		<input type="text" name="txt">
+	</form>
+</body>
+</html>

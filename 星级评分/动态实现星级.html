@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>动态星级评分</title>
+	<style>
+		body, ul, li{
+			padding: 0;
+			margin: 0;
+		}
+		li {
+			list-style: none;
+		}
+		.rating {
+			width: 160px;
+			height: 32px;
+			margin: 100px auto;
+		}
+		.rating-item{
+			float: left;
+			width: 32px;
+			height: 32px;
+			background: url(rating.png) no-repeat;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<ul class="rating" id="rating">
+		<li class="rating-item" title="很不好"></li>
+		<li class="rating-item" title="不好"></li>
+		<li class="rating-item" title="一般"></li>
+		<li class="rating-item" title="好"></li>
+		<li class="rating-item" title="很好"></li>
+	</ul>
+	<ul class="rating" id="rating2">
+		<li class="rating-item" title="很不好"></li>
+		<li class="rating-item" title="不好"></li>
+		<li class="rating-item" title="一般"></li>
+		<li class="rating-item" title="好"></li>
+		<li class="rating-item" title="很好"></li>
+	</ul>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript">
+
+	//自我执行的匿名函数
+	var rating = (function(){
+		//接收init对象
+		
+		var lightOn = function($item,num){
+				//遍历
+				$item.each(function(index){
+						if(index < num){
+							$(this).css('background-position','0 -32px');
+						}
+						else{
+							$(this).css('background-position','0 0');
+						}
+				});
+			};
+
+		var init = function(R_id, num){
+
+			var $rating = $(R_id),
+				$item = $rating.find('.rating-item');
+
+			//初始化
+			lightOn($item,num);
+
+			$item.on('mouseover',function(){
+				lightOn($item,$(this).index()+1);
+			}).on('click',function(){
+				num = $(this).index()+1;
+			});
+			$rating.on("mouseout",function(){
+				lightOn($item,num);
+			});
+		};
+
+		// jQuery插件
+		$.fn.extend({
+			rating:function(num){
+				return this.each(function(){
+					init(this, num);
+				})
+			}
+		});
+
+		//返回对象
+		return {
+			init:init
+		};
+
+		
+	})();
+
+	rating.init("#rating",2);
+	// rating.init("#rating2",1);
+	$("#rating2").rating(4);
+	//调用插件
+</script>
+</body>
+</html>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Web SQL</title>
+	<style type="text/css">
+		table{
+			border-collapse: collapse;
+			/*边框合并属性*/
+		}
+		td{
+			border: 1px solid #0000cc;
+			padding: 5px;
+		}
+		#message{
+			color: #ff0000;
+		}
+	</style>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			//打开数据库
+			var dbSize = 2*1024*1024;
+			db = openDatabase('firstDB','1.0','第一个数据库',dbSize);//数据库名、数据库版本、描述内容、大小（MB）
+			db.transaction(function(tx){
+				//创建数据表
+				tx.executeSql("create table if not exists customer (id integer primary key,name char(10),address varchar(200))");
+					showAll();
+			});
+
+			$("button").click(function(){
+				var name = $("#name").val();
+				var address = $("#address").val();
+				if(name == "" || address == ""){
+					$("#message").html("请输入姓名和地址");
+					return false;
+				}
+
+				db.transaction(function(){
+					//新增数据
+					tx.executeSql("insert into customer(name,address) values(?,?)",[name,address],function(tx,result){
+						$("#message").html("新增数据库成功");
+						showAll();
+					},function(e){
+						$("#message").html("新增数据库错误："+e.message);
+					});
+				});
+			})
+
+			$(document).on('click',".delItem",function(){
+				var delid = $(this).prop("id");
+				db.transaction(function(tx){
+					//删除数据
+					var delstr = "delete from customer where id=?";
+					alert(delstr);
+					tx.executeSql(delstr,[delid],function(tx,result){
+						$("#message").html("删除数据库完成");
+						showAll();
+					},function(e){
+						$("#message").html("删除数据库错误："+e.errorCode);
+					});
+				});
+			})
+
+			function showAll(){
+				$("#showData").html("");
+				db.transation(function(tx){
+					//显示customer数据表全部数据
+					tx.executeSql("select id,name,address from customer",[],function(tx,result){
+						if(result.rows.length>0){
+							var str = "现有数据：<br><table><tr><td>id</td><td>姓名</td><td>地址</td><td>&nbsp;</td></tr>";
+							for(var i=0;i<result.rows.length;i++){
+								item = result.rows.item(i);
+								str+="<tr><td>"+item["id"]+"</td><td>"+item["name"]+"</td><td>"+item["address"]+"</td><td><input type='button' id='"+item["id"]+"' class='delItem' value='删除'></td></tr>";
+							}
+							str+="</table>";
+							$("#showData").html(str);
+						}
+					},function(e){
+						$("#message").html("select 语法出错了！"+e.message);
+					});
+				});
+			}
+		})
+	</script>
+</head>
+<body>
+	<table>
+		<tr>
+			<td>姓名：</td>
+			<td><input type="text" id="name" ></td>
+		</tr>
+		<tr>
+			<td>地址：</td>
+			<td><input type="text" id="address" ></td>
+		</tr>
+	</table>
+	<button id="new">发送</button>
+	<p></p>
+	<div id="message"></div>
+	<div id="showData"></div>
+</body>
+</html>

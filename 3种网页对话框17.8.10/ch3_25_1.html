@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	function tran(){
+		opener.myform.txt.value = document.myform.txt.value;
+		window.close();
+	}
+	</script>
+</head>
+<body>
+	<form name="myform">
+		 <input type="text" name="txt" value="测试">
+		 <input type="button" name="" value="传递" onclick="tran()">
+	</form>
+</body>
+</html>

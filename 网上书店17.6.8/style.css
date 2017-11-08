@@ -1,0 +1,348 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+body{
+	/*overflow: hidden;*/
+}
+#header{
+	opacity: 0.7;
+	background: white;
+	width: 1400px;
+	height: 30px;
+	margin: 0px auto;
+	box-shadow: 0px 0px 1px 1px #666;
+}
+#header a:hover {
+	color: #111;
+}
+#header a{
+	float: right;
+	padding: 0 5px;
+	border-left: 1px solid #666;
+	color: #666;
+	font-size: 18px;
+	font-weight: lighter;
+	line-height: 30px;
+	text-decoration: none;
+}
+#music #audio1{
+	position: absolute;
+	left: 60px;
+	opacity: 0.5;
+	width: 150px;
+	height: 20px;
+}
+.search{
+	box-shadow: 0px 0px 2px #666;
+	margin: 20px auto;
+	height:30px;
+	width:400px;
+	background:#fff;
+	border:1px solid gray;
+	z-index: 1000;
+}
+.search .s-text{
+	width:300px;
+	border:none;
+	height: 30px;
+	padding-left: 10px;
+	outline: 1px;
+	line-height:50px;
+	font-size:16px;
+}
+.search .s-con{
+	z-index: 300;
+	width: 90px;
+	height: 30px;
+	background:#999;
+	border: none;
+	border-left: 1px solid #666;
+	color: white;
+	cursor: pointer;
+	outline: none;
+	float: right;
+	font-size: 120%;
+}
+.search .s-con:hover{
+	background: red;
+	color: white;
+}
+.search #biao{
+	z-index: 5000;
+}
+table {
+        font-family: '微软雅黑', '宋体', '黑体';
+        display: block;
+}
+tbody{ 
+}
+td {
+        background-color: rgb(249,252,255);
+        height: 24px;
+        width: 535px;
+}
+td:hover {
+        background-color: rgb(168,213,252);
+        cursor: pointer;
+}
+#content{
+	border: 1px solid black;
+	border-left: 1px solid #f1f1f1;
+	border-right: 1px solid #f1f1f1;
+	background: #f1f1f1;
+	margin: 50px auto 2px;
+	width: 1400px;
+	height: 570px;
+	position: relative;
+}
+#content .d_0{
+	margin: 5px;
+	border: 1px solid #666;
+	position: absolute;
+	top: 0px;
+	width: 1388px;
+	height: 225px;
+	background: #f34353;
+}	
+
+.v_show{
+	border: 1px solid gray;
+	border-bottom: none;
+	margin: 0px auto;
+	width: 800px;
+	height: 220px;
+	position: relative;
+	box-shadow: 0 -3px  3px #666;
+}
+.v_caption{
+	background: #dcdcdc;
+	/*border: 1px solid #636776;*/
+	width: 800px;
+	height: 30px;
+}
+.cartoon{
+	margin: 0 10px;
+	line-height: 30px;
+	left: 10px;
+	font-size: 18px;
+	font-weight: lighter;
+	position: absolute;
+}
+.highlight_tip{
+	position: absolute;
+	top: 5px;
+	left: 130px;
+}
+
+.d_list{
+	/*background: red;*/
+	float: left;
+	width: 10px;
+	height: 10px;
+	border: 1px solid #f5f5f5;
+	border-radius: 6px;
+	margin: 3px;
+}
+.current{
+	background: white;
+	border: 1px solid #666;
+}
+.change_btn{
+	position: absolute;
+	width: 800px;
+	height: 160px;
+	/*left: 210px;*/
+	top: 30px;
+}
+.direct{
+	top: 60px;	
+	line-height: 33px;
+	background: white;
+      	opacity: 0;  
+	border-radius: 5px;
+	font-size: 20px;
+	color: black;
+	letter-spacing:20px;
+	text-decoration: none;
+	text-align: center;
+}
+.direct:hover{
+	opacity: 0.5;  
+}
+.prev{
+	left: 0px;
+	position: absolute;
+	z-index: 10000;
+}
+.next{
+	position: absolute;
+	left: 763px;
+	z-index: 100;
+}
+.more{
+	text-decoration: none;
+	color: black;
+	font-family: "微软雅黑";
+	float: right;
+	line-height: 30px;
+}
+.v_content{
+	margin: 0;
+	background: #f5f5f5;
+	border: 0px solid gray;
+	width: 800px;
+	height: 190px;
+}
+.v_content_list{
+	overflow: hidden;
+	position: absolute;
+	background: white;
+	border:none;
+	/*border-top: 1px solid gray;*/
+	/*border-bottom: 1px solid gray;*/
+	margin:0;
+	width: 800px;
+	height: 190px;
+	z-index: 2;
+}
+ul{
+	position: absolute;
+	left: 0px;
+	float: left;
+	width: 3216px;
+	height: 190px;
+}
+.li{
+	/*padding:  5px;*/
+	text-align: left;
+	/*margin-right: 2px;*/
+	/*background: red;*/
+	/*margin-top: 10px;*/
+	float: left;
+	width: 200px;
+	height: 180px;
+	list-style: none;
+	border-right: 0px solid red;
+}
+li a em{
+	margin: 20px 0 0 0 ;
+	color: red;
+	font-size: 16px;
+	padding: 0 0 0 5px;
+}
+li a img{
+	margin: 6px 0 0 0;
+}
+li a img:hover{
+	opacity: 0.7;  
+	/*border-radius: 5px;
+	box-shadow: 2px 2px 3px  2px red;*/
+}
+li a span{
+	color: red;
+	font-size: 12px;
+	padding: 0 0 0 10px;
+}
+#content .d_1{
+	margin: 5px;
+	border: 1px solid #666;
+	position: absolute;
+	top: 240px;
+	width: 600px;
+	height: 320px;
+	/*background: blue;*/
+}
+#tabs {
+	       position: absolute;
+                    width:300px;
+                    /*padding:5px;*/
+                    height:200px;
+                    margin: 0px;
+          }
+#tabs ul{
+	        padding: 0 5px;;
+                    list-style:none;
+                    display: block;
+                    height:30px;
+                    width: 598px;
+                    line-height:30px;
+                   /* border-bottom: 2px #999 solid;*/
+            }
+#tabs ul li{
+                    background:#fff;
+                    cursor:pointer;
+                    float:left;
+                    list-style:none;
+                    height:28px;
+                    line-height:28px;
+                    margin:5px 4px 0 0;
+                    border:1px solid #aaaaaa;
+                    border-bottom:none;
+                    display:inline-block;
+                    width:60px;
+                    text-align: center;
+               }
+#tabs ul li.on{
+                    border-top: 2px solid #fff;
+                    /*border-bottom: 2px solid #fff; */
+                    border-left: 2px solid #fff; 
+                    border-right: 2px solid #fff;
+                    background: #d3d3d3;
+                    color: white;
+                  }
+#tabs div{
+	        margin: 40px 0 0 5px;
+                    height:120px;
+                    width: 200px;
+                    line-height: 25px;
+                    border: 2px solid #999;
+                    border-top:2px #999 solid;;
+                    padding: 5px 5px 5px 5px;
+             }
+#tabs div a{
+	text-decoration: none;
+	color: green;
+}
+.hide{
+                    display: none;
+         }  
+.d_2{
+	margin: 5px;
+	border: 1px solid #666;
+	position: absolute;
+	top: 240px;
+	right: 1px;
+	width: 600px;
+	height: 320px;
+}
+/*.d_2 #send{
+	margin: 5px 5px;
+	color: blue;
+}*/
+.d_2 .comment{
+	color: green;
+	margin: 5px 0 0 115px;
+	line-height: 25px;
+	height: 25px;
+	width: 300px;
+}
+.d_2 #resText{
+	height: 285px;
+	width: 300px;
+	margin-left: 5px;
+	border: 1px solid gray ;
+}
+#footer{
+	background-color:  #A9A9A9;
+	margin: 0 auto;
+	/*top: 800px;*/
+	width: 1400px;
+	height: 25px;
+}
+#footer p{
+	color: black;
+	text-align: center;
+	line-height: 25px;
+	font-size: 12px;
+}

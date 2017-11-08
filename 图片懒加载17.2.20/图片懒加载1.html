@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片懒加载</title>
+	<style type="text/css">
+    *{
+    	margin: 0;
+    	padding: 0; 
+     }
+    #box{
+        height:950px;
+        width:950px;
+        background:white;
+        margin:50px auto;
+    }  
+    #box ul li
+    {
+		list-style:none;
+		width: 288px;
+		height: 180px;
+		float: left;
+		border: 1px solid gray;
+		margin: 10px;
+		cursor:pointer;
+	}
+	#box ul li:hover img
+	{
+		filter:alpha(Opacity=70);
+		-moz-opacity:0.7;
+		opacity: 0.7;
+	}
+	
+	.text{
+		text-align:center;
+		margin:30px auto;
+		font-family:"微软雅黑";
+	}
+
+	</style>
+</head>
+<body>
+        <h1 class="text">图片懒加载</h1>
+	<div id="box">
+    	<ul>
+        	<li>
+			<a href=http://www.k1k.cc/ target="_blank"><img src="image/1.jpg" width="288" height="180" alt="点击进入k1k电影网！"></a>
+        	</li>
+			<li>
+        		<a href=http://www.k1k.cc/ target="_blank"><img src="image/2.jpg" width="288" height="180" alt="点击进入k1k电影网！"></a>
+        	</li>
+			<li>
+        		<a href=http://www.k1k.cc/ target="_blank"><img src="image/3.jpg" width="288" height="180" alt="点击进入k1k电影网！"></a>
+        	</li>
+			<li>
+        		<a href=http://www.k1k.cc/ target="_blank"><img src="image/2.jpg" width="288" height="180" alt="点击进入k1k电影网！"></a>
+        	</li>
+			<li>
+        		<a href=http://www.k1k.cc/ target="_blank"><img src="image/1.jpg" width="288" height="180" alt="点击进入k1k电影网！"></a>
+        	</li>
+			<li>
+        		<a href=http://www.k1k.cc/ target="_blank"><img src="image/2.jpg" width="288" height="180" alt="点击进入k1k电影网！"></a>
+        	</li>
+			<li>
+        		<a href=http://www.k1k.cc/ target="_blank"><img src="image/3.jpg" width="288" height="180" alt="点击进入k1k电影网！"></a>
+        	</li>
+			<li>
+        		<a href=http://www.k1k.cc/ target="_blank"><img src="image/2.jpg" width="288" height="180" alt="点击进入k1k电影网！"></a>
+        	</li>
+			<li>
+        		<a href=http://www.k1k.cc/ target="_blank"><img src="image/1.jpg" width="288" height="180" alt="点击进入k1k电影网！"></a>
+        	</li>
+    	</ul>
+	</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Music</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="jquery.min.js"></script>
+</head>
+<body>
+<div id="box">
+
+	<span id="title">阿南亮子 (Anan Ryoko) - Refrain</span>
+
+	<hr width="200" />
+	<audio id="audio" src="阿南亮子 (Anan Ryoko) - Refrain.mp3" preload>对不起，您的浏览器不支持html5音频播放！</audio>
+
+	<div id="CDimage">
+		<img src="QQ.png" alt="CD-image" />
+	</div>
+
+	<div>
+		<input type="range" name="" id="volume" min="0" max="1" step="0.1" onchange="setVolume()">
+	</div>
+
+	<div>
+		<button onclick="lastMusic()">
+			<img src="last.png" width="50" height="50" alt="上一曲" />
+		</button>
+		<button id="toggleBtn" onclick="toggleMusic()">
+			<img src="pause.png" width="50" height="50" alt="暂停/播放" />
+		</button>
+		<button onclick="nextMusic()">
+			<img src="next.png" width="50" height="50" alt="下一曲" />
+		</button>
+	</div>
+</div>
+	<script type="text/javascript" src="script.js"></script>
+</body>
+</html>

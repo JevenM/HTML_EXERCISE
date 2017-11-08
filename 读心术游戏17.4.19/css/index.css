@@ -1,0 +1,39 @@
+* { margin: 0; padding: 0; }
+
+body { background-color: rgba(52, 52, 53, 0.82); }
+
+.cont { width: 980px; height: auto; margin: 20px auto; background-color: rgba(255, 205, 156, 0.64); overflow: hidden; border-radius: 30px }
+
+.wrap { width: 580px; margin: 20px; overflow: hidden; float: left; box-shadow: 0 0 4px rgba(59, 44, 49, 0.8); padding: 10px 0 10px 10px; border-radius: 20px; }
+
+.wrap div { width: 40px; height: 40px; float: left; margin: 0 10px 30px 0; text-align: center; box-shadow: 0 0 1px #aa64c8; border-radius: 100% }
+
+.wrap div img { display: block; overflow: hidden; width: 40px; height: 40px; border-radius: 100% }
+
+.wrap div span { font-size: 20px; font-family: Andalus; color: #000000; text-shadow: 0 1px 0px #000000; line-height: 10px }
+
+.box { width: 310px; margin: 0 auto; float: left; }
+
+.box .explain { padding: 10px; margin: 0 auto; width: 300px; font-size: 16px; line-height: 25px; color: #000000; font-family: 'Microsoft JhengHei'; font-weight: bold; }
+
+.box .btnRe { width: 200px; margin: 60px auto 0; text-align: center; line-height: 40px; background-color: rgba(255, 205, 156, 0.64); font-size: 20px; font-weight:bold; color: #000000; cursor: pointer; padding: 3px; border-radius: 10px; }
+
+.box .btnRe:hover { border: 3px solid rgba(255, 205, 156, 0.64); background-color: #6c85c8; color: rgba(255, 205, 156, 0.64); padding: 0; }
+
+.box .showbox { width: 220px; height: 220px; background-color: rgba(255, 230, 207, 0.64); margin: 10px auto; border-radius: 50%; overflow: hidden; box-shadow: 0 0 10px #aa64c8; }
+
+.box .showbox img { width: 220px; height: 220px;  }
+
+.cont .box .showbox.on { animation: active 2s; -webkit-animation: active 2s; }
+
+@keyframes acitve {
+    0% { box-shadow: 0 0 50px #c789c8; opacity:0.1}
+    50% { box-shadow: 0 0 30px #aa64c8; }
+    100% { box-shadow: 0 0 10px #aa64c8; opacity:1}
+}
+
+@-webkit-keyframes active {
+    0% { box-shadow: 0 0 50px #c789c8; opacity:0.1}
+    50% { box-shadow: 0 0 30px #aa64c8; }
+    100% { box-shadow: 0 0 10px #aa64c8; opacity:1}
+}

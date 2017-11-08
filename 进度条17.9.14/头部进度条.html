@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>头部</title>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin:0;
+		}
+		.loading{
+			width: 100%;
+			height: 100%;
+			position:fixed;
+			z-index: 100;
+			top: 0;
+			left: 0;
+			background: #fff;
+		}
+		.loading .pic{
+			width: 0%;
+			height: 4px;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			background: #f33;
+		}	
+		.center{
+			text-align: center;
+			width: 100%;
+			margin: 4px auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="loading">
+		<div class="pic">	
+		</div>
+	</div>
+	<header>
+		<div class="center">
+			<img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=4022801752,1147505013&fm=200&gp=0.jpg" alt="百度图片">
+		</div>
+	</header>
+
+	<script type="text/javascript">
+		$(".loading .pic").animate({width:"20%"},100);
+	</script>
+
+	<section class="banner">
+		<div class="center">
+			<img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=197144486,1264112589&fm=11&gp=0.jpg" alt="百度图片">
+		</div>
+	</section>
+
+	<script type="text/javascript">
+		$(".loading .pic").animate({width:"40%"},200);
+	</script>
+
+	<section class="about">
+		<div class="center">
+			<img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1019761374,1197310851&fm=27&gp=0.jpg" alt="百度图片">
+		</div>
+	</section>
+
+	<script type="text/javascript">
+		$(".loading .pic").animate({width:"60%"},200);
+	</script>
+
+	<section class="pro">
+		<div class="center">
+			<img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3956805945,1536371408&fm=11&gp=0.jpg" alt="百度图片">
+		</div>
+	</section>
+
+	<script type="text/javascript">
+		$(".loading .pic").animate({width:"80%"},200);
+	</script>
+
+	<section class="news">
+		<div class="center">
+			<img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2976427166,2178524819&fm=27&gp=0.jpg" alt="百度图片">
+		</div>
+	</section>
+
+	<script type="text/javascript">
+		$(".loading .pic").animate({width:"90%"},100);
+	</script>
+
+	<footer>
+		<div class="center">
+			<img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2357619894,3620973597&fm=27&gp=0.jpg" alt="百度图片">
+		</div>
+	</footer>
+
+	<script type="text/javascript">
+		$(".loading .pic").animate({width:"100%"},100,function(){
+			$(".loading").fadeOut();
+		});
+	</script>
+</body>
+</html>

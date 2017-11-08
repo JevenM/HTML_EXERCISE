@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>进度条进入</title>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<style type="text/css">
+		.loading{
+			width: 100%;
+			height: 100%;
+			position:fixed;
+			z-index: 100;
+			top: 0;
+			left: 0;
+			background: #fff;
+		}
+		.loading .pic{
+			width: 64px;
+			height: 64px;
+			background-image: url(loading.gif);
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin:auto;
+		}
+		#center{	
+			text-align: center;
+			margin:100px auto;
+		}
+	</style>
+	<script type="text/javascript">
+		document.onreadystatechange = function (){
+			if(document.readyState == "complete"){
+				var loading = '<div class="loading"><div class="pic"></div></div>';
+				$("body").append(loading);
+				$(".loading").fadeOut();
+			}
+		}
+	</script>
+</head>
+<body>
+
+	<div id="center"><img src="pic.jpg" alt="百度图片"></div>
+</body>
+</html>

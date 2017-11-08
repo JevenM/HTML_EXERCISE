@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>扇子</title>
+	<style type="text/css">
+		body{
+			margin:0;
+			overflow-x: hidden;
+			font-size: 0;
+		}
+		ul{
+			margin:0;
+			padding:0;
+			list-style: none;
+		}
+		img{
+			vertical-align: middle;
+		}
+		#canvas{
+			background: #000;
+		}
+		#nav{
+			width: 130px;
+			height: 400px;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin:auto;
+		}
+		#nav li{
+			position: absolute;
+			left: 0;
+			top: 0;
+			transform-origin: 25px 375px;
+			box-shadow: 2px 2px 20px #000;
+			transition: 1s;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="" height=""></canvas>
+	<ul id="nav">
+		<li><img src="img1.png" alt=""></li>
+		<li><img src="img2.png" alt=""></li>
+		<li><img src="img3.png" alt=""></li>
+		<li><img src="img4.png" alt=""></li>
+		<li><img src="img5.png" alt=""></li>
+		<li><img src="img6.png" alt=""></li>
+		<li><img src="img7.png" alt=""></li>
+		<li><img src="img8.png" alt=""></li>
+		<li><img src="img9.png" alt=""></li>
+		<li><img src="img10.png" alt=""></li>
+		<li><img src="img11.png" alt=""></li>
+		<li><img src="img13.png" alt=""></li>
+	</ul>
+	<script type="text/javascript">
+		var lis = document.querySelectorAll("li");
+		var clicked = true;
+		lis[lis.length-1].onclick = function(){
+			for(var i=0;i<lis.length;i++){
+				var n = Math.ceil(i-lis.length/2);
+				if(clicked){
+					n*=15;
+				}
+				else{
+					n=360;
+				}
+				lis[i].style.transform = 'rotate('+n+'deg)';
+			}
+			clicked = !clicked;
+		};
+		for(var i=0;i<lis.length-1;i++){
+			lis[i].index = i;
+			lis[i].onclick = function(){
+				this.style.transform = 'rotate(0deg)';
+				var leftDeg = 0;
+				for(var i=this.index-1;i>=0;i--){
+					lis[i].style.transform = 'rotate('+(leftDeg-=15)+'deg)';
+				}
+				var rightDeg = 15;
+				for(var i=this.index+1;i<lis.length;i++){
+					lis[i].style.transform = 'rotate('+(rightDeg+=15)+'deg)';
+				}
+			};
+		}
+		var canvas = document.getElementById('canvas');
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight+400;
+	</script>
+</body>
+</html>

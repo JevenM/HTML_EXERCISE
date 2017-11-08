@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>index</title>
+	<meta name="Author" content="maoge">
+	<meta name="Description" content="描述">
+	<meta name="Keywords" content="关键词">
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		#warp{
+			height: 500px;
+		}
+	</style>
+	<script type="text/javascript" src="jQuery/jquery.min.js"></script>
+</head>
+<body id="warp">
+	<P style="color: white; font-size: 50px; margin:200px;text-align: center;">颜色渐变器</P>
+	<script type="text/javascript">
+	// setInterval (function() {
+
+	// });
+	var min = 0;
+	var max  = 255;
+	var color = [max,min,min];//rgb数据
+	var obody = document.querySelector('#warp');
+	var colorl = '';
+	var colorr = '';
+	var timer = null;//定时器变量
+	function change()
+	{
+		for(var i =0;i<3;i++){
+			i %= 3;
+			var arrX = (i+1)%3;
+			var arrY = (i+2)%3;
+			if(color[i] == max&&color[arrX] == min) 
+				color[arrY]++;
+			if(color[i] == min&&color[arrX] == max) 
+				color[arrY]--;
+			}
+		var colorl = 'rgb('+color[0]+','+color[1]+','+color[2]+')';
+		var colorr = 'rgb('+color[2]+','+color[0]+','+color[1]+')';
+		// console.log(colorl);
+		gcolor(colorl,colorr);
+	 }
+	// 	if(color[1]==255 && color[2]==0) color[0]++;
+	// 	if(color[2]==255 && color[0]==0) color[1]++;
+	// 	if(color[0]==255 && color[1]==0) color[2]++;
+	// 	if(color[2]==255 && color[1]==0) color[0]--;
+	// 	if(color[0]==255 && color[2]==0) color[1]--;
+	// 	if(color[1]==255 && color[0]==0) color[2]--;
+	
+	function gcolor(colorl,colorr){
+		obody.style.background='-webkit-linear-gradient(left,'+colorl+','+colorr+')';
+	}
+	timer = setInterval(change,20);//创建定时器必须用setinterval
+	</script>
+	
+</body>
+</html>

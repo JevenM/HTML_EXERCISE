@@ -1,0 +1,111 @@
+<!doctype html><!--声明文档类型：html-->
+<html lang="en">
+	<head><!--头部-->
+		<meta charset="UTF-8"><!--字符编码:utf-8国际编码-->
+		<meta name="Keywords" content="关键词1,关键词2"><!--关键词-->
+		<meta name="Description" content="描述"><!--描述-->
+		<title>Document</title><!--网页标题-->
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			html{
+				perspective:825px;
+			}
+			body{
+				/*perspective:825px;/*景深: 800-1000px*/
+			}
+			.cube{
+				position:relative;
+				width:200px;
+				height:200px;
+				margin:250px auto;
+				transform-style:preserve-3d;
+				transform-origin:50% 50% -101px;
+				opacity: 1;
+			}
+			.cube div{
+				position:absolute;
+				left:0;
+				top:0;
+				width:200px;
+				height:200px;
+				border:2px solid white;
+			}
+			.cube div:nth-child(1){/*css3结构伪类选择器*/
+				line-height: 200px;
+				text-align: center;
+				background: blue;
+				top:-202px;
+				/*transform-origin:50% 50% 0;默认值:x y z*/
+				transform-origin:bottom;
+				transform:rotateX(90deg);
+
+			}
+			.cube div:nth-child(2){
+				line-height: 200px;
+				text-align: center;
+				background: green;
+				top:202px;
+				transform-origin:top;
+				transform:rotateX(-90deg);
+			}
+			.cube div:nth-child(3){
+				line-height: 200px;
+				text-align: center;
+				background: red;
+				left:-202px;
+				transform-origin:right;
+				transform:rotateY(-90deg);
+			}
+			.cube div:nth-child(4){
+				line-height: 200px;
+				text-align: center;
+				background: pink;
+				left:202px;
+				transform-origin:left;
+				transform:rotateY(90deg);
+			}
+			.cube div:nth-child(5){
+				line-height: 200px;
+				text-align: center;
+				background: gray;
+				
+			}
+			.cube div:nth-child(6){
+				line-height: 200px;
+				text-align: center;
+				background: yellow;
+				transform:translateZ(-202px);/*沿着z轴向里移动202px*/
+			}
+			.cube:hover{/*鼠标移上去实现什么效果*/
+				animation:rot 5s linear infinite;/*css3自定义动画:动画的名称 时间 匀速运动*/
+			}
+			@keyframes rot{
+				/*css3关键帧: 具体规定每一帧动画*/
+				from{
+					transform:rotateY(0deg) rotateZ(0deg) rotateX(0deg);
+				}
+				to{
+					transform:rotateY(360deg) rotateZ(360deg) rotateX(360deg);
+				}
+				/*设置各个时间点的状态
+					0%{}
+					10%{}
+					100%{}
+				*/
+			}
+		</style>
+	</head>
+	<body><!--身体-->
+		<div class="cube">
+			<div>上</div>
+			<div>下</div>
+			<div>左</div>
+			<div>右</div>
+			<div>前</div>
+			<div>后</div>
+		</div>
+	</body>
+</html>

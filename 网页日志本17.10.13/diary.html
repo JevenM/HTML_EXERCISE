@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>My-Diary</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="script.js"></script>
+</head>
+<body onload="getHistory()">
+	<h2>My-Diary</h2>
+	<hr style="width: 300px; color: white;">
+	<div>
+		<h4>Let's Begin...</h4>
+		<textarea id="diary"></textarea>
+		<br>
+		<button onclick="saveDiary()">保存日志</button>
+		<button onclick="clearDiary()">删除全部日志</button>
+	</div>
+	<div>
+		<table border="1 solid #fff;" cellspacing="0" cellpadding="0" style="table-layout: fixed; box-shadow: 5px 5px 5px #808080;">
+			<caption>历史记录</caption>
+			<tr>
+				<th>序号</th>
+				<th>日志内容</th>
+				<th>保存时间</th>
+				<th>操作</th>
+			</tr>
+			<tbody id="history"></tbody>
+		</table>
+	</div>
+</body>
+</html>

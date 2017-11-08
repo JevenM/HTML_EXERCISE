@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="index" content="">
+  <title>index</title>
+   <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+   <link rel="stylesheet" type="text/css" href="css/index.css"/>
+   <style>
+	
+   </style>
+</head>
+<body>
+<div class="cont">
+    <div class="wrap">
+		
+	</div>
+    <div class="box">
+        <div class="explain">
+            <strong>游戏规则:</strong><br>任意选择一个两位数（或者说，从10~99之间任意选择一个数），把这个数的十位与个位相加，再把任意选择的数减去这个和。并把这个图形牢记心中，然后点击水晶球。<br>你会发现，水晶球所显示出来的图形就是你刚刚心里记下的那个图形。<br>例如：你选的数是23，然后2+3=5，然后23-5=18,在图表中找出与最后得出的数所相应的图形
+        </div>
+        <div class="showbox"><img src="" alt=""></div>
+        <div class="btnRe">刷 新</div>
+    </div>
+</div>
+ <script> 
+	/*
+		网页的特效 静态网页通过JavaScript加工之后形成动态效果网页
+			1.与用户交互 响应用户的操作
+			2.改变页面元素或者样式 制作网页特效
+			3.用于做表单验证
+			4.前后端数据交互 ajax
+		一 如何用JavaScript动态生成元素节点
+			1.往谁里面添加元素 wrap
+				获取到wrap
+				 声明  变量  保存 我们的wrap节点
+				 var  oWrap   = document.querySelector('.wrap');
+			2.添加什么格式的元素节点
+				<div>
+					<img src='img/1.png'>
+					<span></span>
+				</div>
+			3.如何添加添加多少个
+				循环 for  innerHTML改变元素内容
+		二 读心术原理推算
+								
+				ab    a+b     (10*a)+b   (10a)+b-a-b  10a-a=9a
+				39   3+9=12   (3*10)+9 
+				51   5+1=6     (10*5)+1    51-6=45   45%9=0
+		        水晶球图片的数字 是9的倍数
+			
+			2. 随机数 1-99随机数
+			3.获取所有的img标签
+			4.改变img标签的src
+				for + random 
+			5.判断是否整除  i%9==0
+		三 定时器和点击事件
+			点击事件 oBtn.onclick=change; 
+			定时器 每隔10毫秒执行一次change函数
+			
+		1.知识体系不完善 
+			
+		IIFE
+		
+		闭包 
+			作用域
+				私有变量 全局变量 函数声明 函数
+			函数和对象
+				回调函数
+			垃圾GC回收机制
+				
+			模块化开发
+
+
+		子的拼写 子的含义 应用环境
+		显性的知识
+		事件 变量 函数 参数 作用域 对象 数组 json js内置对象方法 定时器
+		所有的dom方法 所有的bom方法
+	
+		词法 隐性的一层
+
+		闭包 递归 迭代 模块化 对象的this 面向对象 原型链 
+		    ajax         正则表达式       json 
+		数据交互技术	文本匹配技术   数据存储格式
+		
+		
+		思维模式架构
+		
+		编程思维 高阶函数 高阶算法 数据结构 
+		架构思想 
+		
+		碰撞检测模块
+				
+		事件监听模块
+
+		动态dom模块
+
+		重力模拟模块
+
+
+		javaScript 基于原型的动态解释性脚本语言
+
+		网页设计师 切图的 
+			
+	*/
+	 var oWrap = document.querySelector('.wrap'); //H5 最新元素获取API方法 ie8
+	 var oBtn  = document.querySelector('.btnRe');//获取刷新按钮
+	 var oShow = document.querySelector('.showbox img');
+	 var str=""; //声明字符串 用于拼接 dom元素
+	 var num=96; 
+	 var oImg;
+	 var timer=null;
+	 var timeouter=null;
+	 for(var i=1;i<=num;i++){
+		str+=`<div>
+					<img src='img/${i}.png'>
+					<span>${i}</span>
+				</div>`
+	 }
+	 oWrap.innerHTML=str; //改变标签的内容 innerHTML可以识别标签
+	change();
+	function change(){
+		oImg=document.querySelectorAll('.wrap div img');
+		var len=oImg.length;
+		var ranX=Math.floor(Math.random()*99)+1;
+		for(var i=0;i<len;i++){
+			var ran=Math.floor(Math.random()*99)+1;//0-1之间的随机数不会得到1 0-98
+			if(i!=0&&i%9==0){
+				oImg[i-1].src='img/'+ranX+'.png';
+				oImg[i].src='img/'+ran+'.png';
+			}else{
+				oImg[i].src='img/'+ran+'.png';
+			}
+		}
+	}
+
+	/*谁 被点击 做了什么事*/
+	oBtn.onclick=function(){
+		end();
+		oShow.src=''
+		timer=setInterval(change,10); //定时器 循环执行chagne 每隔10毫秒
+		timeouter=setTimeout(function(){
+			clearInterval(timer);  //清除定时器
+			 //获取第八个小图片的图片地址赋值给oShow
+		},500);
+	}; 
+	oShow.onclick=function(){
+		oShow.parentNode.classList.add('on');  // h5api操作节点的class名称列表
+		oShow.src=oImg[8].src; 
+	}
+	function end(){
+		clearInterval(timer);
+		clearTimeout(timeouter);
+	}
+	//点击时触发指定函数
+	/*function forEach(obj,cb){
+		var len=obj.length;
+		for(var i=0;i<len;i++){
+			cb(obj[i])
+		}
+	}
+	
+    forEach(oImg,function(ele){
+		ele.style.width=100+'px';
+	})
+	forEach(oImg,function(ele){
+		ele.style.height=100+'px';
+	})
+	*/
+	
+ </script>
+ </body>
+</html>

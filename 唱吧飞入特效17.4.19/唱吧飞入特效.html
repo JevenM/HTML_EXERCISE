@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>index</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		/*.glow1 { 
+			filter:glow(color=#FF0000,strengh=2);
+		}*/
+		#wrap{
+			background-color: #ff5046;
+			font-family: "微软雅黑";
+			overflow: hidden;
+			height: 700px;
+		}
+		.header{
+			width: 960px;
+			height: 80px;
+			/*border: 2px solid blue;*/
+			margin: 0 auto;
+			line-height: 80px;
+		}
+		.header-l{
+			float: left;
+		}
+		.header-l img{
+			vertical-align: middle;/*图片垂直居中*/
+		}
+		.header-r{
+			float: right;
+		}
+		.header-r ul li{
+			list-style: none;
+			float: left;
+			margin-left: 33px;
+		}
+		.header-r ul li a{
+			color: white;
+			text-decoration: none;
+			font-size: 12px;
+		}
+		.title{
+			width: 960px;
+			margin: 0px auto;
+		}
+		.title img{
+			display: block;
+			margin-left: 310px;/*为啥不能用margin: 0 auto;????*/
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+		@-webkit-keyframes twinkling{
+  			0% {
+      				opacity: 0; 
+ 			}
+  			100% {
+     				opacity: 1; 
+  			}
+		}
+		.glow1{
+    			-webkit-animation: twinkling 1s 3 ease-in-out; 
+		}
+		.title a{
+			display: block;
+			width: 103px;
+			height: 48px;
+			color: #fff;
+			margin: 0 auto;
+			padding-left: 60px;
+			line-height: 48px;
+			text-decoration: none;
+			background: url("img/download.png");
+		}
+		.content{
+			width: 960px;
+			height: 413px;
+			/*border: 1px solid blue;*/
+			margin: 0 auto;
+			position: relative;
+		}
+		.content img{
+			position: absolute;
+		}
+		/*css3选取子元素*/
+		.content img:nth-child(1){
+			top: 111px;
+			left: -1000px;
+		}/*.on 前面不要加空格！！！！！！！！！！！！1*/
+		.content img:nth-child(1).on{
+			left: -28px;
+			transition: .5s 1s;/*执行动画时间 延时时间*/
+		}
+		.content img:nth-child(2){
+			top: 81px;
+			left: -1000px;
+		}
+		.content img:nth-child(2).on{
+			left: 151px;
+			transition: .5s .5s;/*执行动画时间*/
+		}
+		.content img:nth-child(3){
+			top: 13px;
+			left: 313px;
+			animation: move .8s linear;/*名字 时间 匀速*/
+		}
+		@keyframes move{
+			0%{
+				opacity: 0;
+				transform: scale(0);
+			}
+			10%{
+				opacity: 1;
+				transform: scale(0.5);
+			}
+			20%{
+				opacity: 1;
+				transform: scale(0.6);
+			}
+			30%{
+				opacity: 1;
+				transform: scale(0.85);
+			}
+			40%{
+				opacity: 1;
+				transform: scale(1);
+			}
+			50%{
+				opacity: 1;
+				transform: scale(0.95);
+			}
+			60%{
+				opacity: 1;
+				transform: scale(0.9);
+			}
+			70%{
+				opacity: 1;
+				transform: scale(0.8);
+			}
+			80%{
+				opacity: 1;
+				transform: scale(0.9);
+			}
+			90%{
+				opacity: 1;
+				transform: scale(1.1);
+			}
+			100%{
+				opacity: 1;
+				transform: scale(1);
+			}
+		}
+		.content img:nth-child(4){
+			top: 22px;
+			left: 1530px;
+		}
+		.content img:nth-child(4).on{
+			left: 514px;
+			transition: .5s .5s;/*执行动画时间*/
+		}
+		.content img:nth-child(5){
+			top: 0px;
+			left: 1530px;
+		}
+		.content img:nth-child(5).on{
+			left: 668px;
+			transition: .5s 1s;/*执行动画时间*/
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div class="header">
+			<div class="header-l">
+				<img src="img/logo.png" />
+			</div>
+			<div class="header-r">
+				<ul>
+					<li><a href="#">首页</a></li>
+					<li><a href="#">精彩</a></li>
+					<li><a href="#">会员中心</a></li>
+					<li><a href="#">金币充值</a></li>
+					<li><a href="#">唱吧直播间</a></li>
+					<li><a href="#">火星直播</a></li>
+					<li><a href="#">游戏中心</a></li>
+					<li><a href="#">加入唱吧</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="title">
+			<img class="glow1" src="img/ktv.png" />
+			<a href="#">免费下载</a>
+		</div>
+		<div class="content">
+			<img src="img/top1.png" />
+			<img src="img/top2.png" />
+			<img src="img/top3.png" />
+			<img src="img/top4.png" />
+			<img src="img/top5.png" />
+		</div>
+	</div>
+	<script type="text/javascript">
+		var con = document.getElementsByClassName('content')[0];
+		var img = con.getElementsByTagName('img');
+		window.onload = function(){
+			for(var i =0;i<img.length;i++)
+			{
+				img[i].className = "on";
+			}
+		}
+	</script>
+</body>
+</html>

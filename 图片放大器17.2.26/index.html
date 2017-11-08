@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>上传图片放大镜</title>
+	<style type="text/css">
+		*{
+			padding: 0px;
+			margin: 0px;
+		}
+		body{
+			background: #3c8fc1;
+		}
+		#box{
+			position: relative;/*相对于自己，自己相当于是后代的参照物*/
+			width: 900px;
+			height: 350px;
+			background-image: url("images/bg.jpg");
+			margin: 100px auto;
+		}
+		.upload{
+			position: absolute;/*相对于距自己最近的带有定位属性的父亲元素来定位*/
+			left: 40px;
+			top: 220px;
+			width: 440px;
+			height: 100px;
+			background: #ddd;
+			padding: 10px;
+			border-radius: 10px;
+		}
+		.showImg{
+			position: absolute;
+			top: 31px;
+			right: 57px;
+			border-radius: 10px;
+			border: 1px solid red;
+			width: 285px;
+			height: 285px;
+			overflow: hidden;
+		}
+		.uploadFile{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #ccc;
+			border-top-left-radius: 10px;
+			border-bottom-left-radius: 10px;
+			background: white url(images/img.png) no-repeat center;
+			float: left;
+			cursor: pointer;
+		}
+		input#fileName{
+			width: 285px;
+			height: 100px;
+			border: 1px solid #ccc;
+			border-left: 0;
+		}
+		.uploadFile input{
+			opacity: 0;
+			width: 100px;
+			height: 100px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div class="upload">
+			<div class="uploadFile">
+			<!--监听input的值是否发生变化，如变化则执行后面的函数-->
+				<input type="file" name="file" onchange="upload(this)" />
+			</div>
+			<input type="text" name="text" id="fileName" value="" />
+		</div>
+		<div class="showImg">
+			<img src="" id="img" width="285" height="285" >
+		</div>
+	</div>
+	<script type="text/javascript" src="js/magnifier.js"></script>
+	<script>
+		var fileName = document.getElementById("fileName");
+		var Img = document.getElementById("img");
+		function upload(obj)
+		{
+			fileName.value = obj.files[0].name;
+			Img.src =window.URL.createObjectURL(obj.files[0]);
+			Img.setAttribute("bigsrc",Img.src);
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+body{
+	background: url(1.jpg);
+	opacity: 0.7;
+}
+div, h2{
+	margin: 10px auto;
+	text-align: center;
+}
+h2, h4{
+	color: white;
+}
+textarea{
+	padding: 8px 8px;
+	width: 94%;
+	height: 200px;
+	text-indent: 2em;/*文字缩进*/
+	border: none;
+	box-shadow: 5px 5px 5px #808080;
+	text-align: left;
+}
+button{
+	width: 150px;
+	height: 30px;
+	margin: 20px auto;
+	background-color: #d3d3d3;
+	box-shadow: 5px 5px 5px #808080;
+	border: 0;
+	border-radius: 10px;
+}
+table{
+	background-color: white;
+	width: 95%;
+	margin: auto;
+}
+caption, th{
+	font-weight: lighter;
+}
+td{
+	width: 300px;
+	text-align: center;
+	vertical-align: center;
+}
+#history{
+	background-color: white;
+	word-wrap: break-word;/*换行*/
+}

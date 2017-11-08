@@ -1,0 +1,64 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+.banner
+{
+	background-color: ;
+	width: 1080px;
+	height: 440px;
+	margin: 100px auto 0;	
+	position: relative;
+}
+.banner .btn{
+	position: absolute;
+	margin-top: -54px;	
+	top: 50%;
+}
+.left{
+	left: 0px;
+}
+.right{
+	right: 0px;
+}
+.pic{
+	width: 966px;
+	height: 440px;
+	margin: 0 auto;
+	position: relative;
+	background: ;
+	overflow: hidden;
+}
+.banner .pic ul{
+	width: 400%;
+	height: 440px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: #98FB98;
+}
+.banner .pic ul li{
+	width: 270px;
+	height: 430px;
+	border: 1px solid #f893b4;
+	border-top: 5px solid #f893b4;
+	border-bottom: 5px solid #f893b4;
+	margin: 0 20px;
+	padding: 0 5px;
+	float: left;
+	list-style: none;
+	background: #E6E6FA;
+}
+.banner .pic ul li .tupian{
+	margin-bottom: 20px;
+}
+.banner .pic ul li p{
+	padding-top: 40px;
+	border-top: 2px solid #666; 
+}
+
+
+
+
+
+

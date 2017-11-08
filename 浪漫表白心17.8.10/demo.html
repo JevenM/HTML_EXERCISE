@@ -1,0 +1,118 @@
+<!doctype html><!--声明文档类型：html-->
+<html lang="en">
+	<head><!--头部-->
+		<meta charset="UTF-8"><!--字符编码:utf-8国际编码-->
+		<meta name="Keywords" content="关键词1,关键词2"><!--关键词-->
+		<meta name="Description" content="描述"><!--描述-->
+		<title>Document</title><!--网页标题-->
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			body{
+				background:#000;
+				overflow:hidden;
+			}
+			.heart{
+				position:relative;
+				width:100px;
+				height:160px;
+				margin:100px auto;
+				transform-style:preserve-3d;/*设置3D环境*/
+				/*border-radius:50% 40% 10% 0;顺时针*
+				/*border-radius:50% 40% 10% 0/0 10% 40% 50%;水平方向 竖直方向*
+				border-radius:50% 50% 0/40% 50% 0;/**
+				border-width:2px 2px 0 0;/*边框:上 右 下 左*
+				transform:rotate(45deg);/*css3变换:旋转*/
+				animation:rot 15s linear infinite;/*css3自定义动画: 动画的名称 动画执行的时间 匀速运动 无限重复*/
+			}
+			@keyframes rot{/*css3关键帧*/
+				from{transform:rotateY(0deg) rotateX(0deg)}
+				to{transform:rotateY(360deg) rotateX(360deg)}
+			}
+			.star{
+				position:absolute;
+				left:0;
+				top:0;
+				width:100px;
+				height:160px;
+				border:1px solid red;
+				border-radius:50% 50% 0/40% 50% 0;/**/
+				border-width:1px 1px 0 0;/*边框:上 右 下 左*/
+				/*transform:rotate(45deg);css3变换:旋转*/
+			}
+			.cube{
+				position:relative;
+				width:50px;
+				height:50px;
+				transform-style:preserve-3d;
+				transform:translateX(25px) translateY(54px) translateZ(25px);
+			}
+			.cube div{
+				position:absolute;
+				left:0;
+				top:0;
+				width:50px;
+				height:50px;
+			}
+			.cube div:nth-child(1){
+				top:-50px;
+				transform-origin:bottom;
+				transform:rotateX(90deg);
+
+			}
+			.cube div:nth-child(2){
+				top:50px;
+				transform-origin:top;
+				transform:rotateX(-90deg);
+			}
+			.cube div:nth-child(3){
+				left:-50px;
+				transform-origin:right;
+				transform:rotateY(-90deg);
+			}
+			.cube div:nth-child(4){
+				left:50px;
+				transform-origin:left;
+				transform:rotateY(90deg);
+			}
+			.cube div:nth-child(5){
+				
+			}
+			.cube div:nth-child(6){
+				transform:translateZ(-25px);/*沿着z轴向里移动202px*/
+			}
+			p{
+				text-align: center;
+				font-size: 50px;
+				font-family: "yahei";
+				color: white;
+			}
+		</style>
+	</head>
+	<body><!--身体-->
+		<div class="heart">
+			<div class="cube">
+				<div><img src="images/1.jpg" width="100%" height="100%"></div>
+				<div><img src="images/2.jpg" width="100%" height="100%"></div>
+				<div><img src="images/3.jpg" width="100%" height="100%"></div>
+				<div><img src="images/4.jpg" width="100%" height="100%"></div>
+				<div><img src="images/5.jpg" width="100%" height="100%"></div>
+				<div><img src="images/6.jpg" width="100%" height="100%"></div>
+			</div>
+		</div>
+		<div><p>***我爱你！</p></div>
+		<script type="text/javascript">
+			var heart = document.getElementsByClassName("heart")[0];
+
+			for (var i=0;i<36 ;i++ )
+			{
+				var oDiv = document.createElement("div");
+				oDiv.className = "star";
+				oDiv.style.transform = "rotateY("+10*i+"deg) rotateZ(45deg) translateX(30px)";
+				heart.appendChild(oDiv);
+			}
+		</script>
+	</body>
+</html>

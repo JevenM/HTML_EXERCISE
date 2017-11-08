@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>浪漫流星雨</title>
+	<meta name="keywords" content="" />
+	<meta name="Description" content="">
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		html,body{
+			height: 100%;
+		}
+		canvas{
+			width: 100%;
+			height: 100%;
+			background: #000;
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas">如果你看到这行字，说明你的浏览器out了！</canvas>
+	<script type="text/javascript">
+	var can = document.getElementById('canvas');
+	//绘图环境
+	var cxt = can.getContext('2d');
+	//获取窗口的宽高
+	var w = can.width = window.innerWidth;
+	var h = can.height = window.innerHeight;
+	//让画布的 宽高跟随浏览器的宽高变化
+	window.onresize = function(){
+		w = can.width = window.innerWidth;
+		h = can.height = window.innerHeight;
+	}
+	//绘制画笔颜色
+	cxt.fillStyle = 'red';
+	// //绘制矩形
+	// cxt.fillRect(0,0,100,100);
+	// //cxt.fill()填充实心
+	// //绘制圆形
+	// cxt.arc(250,250,50,0,Math.PI*2,false);//圆心坐标，半径0~360度，逆时针false
+	// cxt.fill();
+	var x = 100,y = 0;
+	// setInterval(function(){
+	// 	y++;
+	// 	cxt.clearRect(0,0,w,h);//清除画布内容
+	// 	//重绘画布
+	// 	cxt.fillRect(x,y,50,50);
+	// },1000/60);
+	// function move(){
+	// 	y++;
+	// 	cxt.clearRect(0,0,w,h);
+	// 	cxt.fillRect(x,y,50,50);
+	// 	requestAnimationFrame(move);
+	// 		}
+	// 	move();
+	
+	var drops = [];
+	// 创建雨滴对象
+	function Drop(){
+
+	}
+	//添加原型对象方法
+	Drop.prototype = {
+		init : function(){//设置初始雨滴的属性
+			//位置
+			this.x = random(0,w);
+			this.y = 0;
+			//y方向的速度值
+			this.vy = random(4,5);
+			//雨滴下落的最大高度
+			this.l = random(0.8*h,0.9*h);
+			//添加波纹的半径
+			this.r = 1;//半径
+			this.vr = 1;//半径增大的速度
+			this.a = 1;//判断雨滴消失的不透明度
+			this.va = 0.96;//不透明度的变化系数
+		},
+		draw : function(){//绘制图形
+			if(this.y>this.l){//雨滴下落到指定位置，开始绘制圆形
+				cxt.beginPath();//先开始路径，抬起画笔
+				cxt.arc(this.x,this.y,this.r,0,Math.PI*2,false);
+				cxt.strokeStyle = "rgba(0,255,255,"+this.a+")";
+				cxt.stroke();
+			}else{//绘制雨滴
+				cxt.fillStyle = "rgb(0,255,255)";
+				cxt.fillRect(this.x,this.y,2,10);
+			}
+			
+			this.update();
+		},
+		update : function(){//更新坐标
+			if(this.y<this.l){
+				this.y += this.vy;
+			}else{//雨滴下落到指定位置 绘制波纹
+				if(this.a > 0.03){
+					this.r += this.vr;
+					if(this.r>50){
+						this.a *= this.va;
+					}
+				}
+				else{
+					//重新初始化雨滴数据
+					this.init();
+				}
+			}
+		}
+	}
+
+
+	// //新建一个雨滴实例化对象
+	// var drop = new Drop();
+	// drop.init();//初始化
+	// drop.draw();//绘制
+	
+	for(var i=0;i<30;i++)
+	{
+		setTimeout(function(){
+			var drop = new Drop();
+			drop.init();
+			drops.push(drop);
+		},i*200);
+		
+	}
+	function move()
+	{
+		// cxt.clearRect(0,0,w,h);
+		// 先绘制透明层，再绘制雨滴，雨滴就会把透明层覆盖，下一次再绘制透明层就会把雨滴覆盖，若干透明层叠加就不透明了
+		cxt.fillStyle = "rgba(0,0,0,0.1)";
+		cxt.fillRect(0,0,w,h);
+		for(var i=0;i<drops.length;i++)
+		{
+			drops[i].draw();
+		}
+		requestAnimationFrame(move);
+	}
+	move();
+	//生成随机数方法
+	function random(min,max)
+	{
+		return Math.random()*(max-min)+min;//max~min之间的数
+	}
+	</script>
+</body>
+</html>

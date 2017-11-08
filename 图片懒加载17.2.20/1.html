@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+</head>
+<body>
+
+<ul id="test"><li>JavaScript</li><li>HTML</li></ul> 
+ 
+<script type="text/javascript">
+
+  var otest = document.getElementById("test");  
+  var newnode = document.creatElement("li");
+  //var newtext = document.creatTextNode("PHP");
+  //newnode.appendChild(newtext);
+  newnode.innerHTML = "PHP";
+  otest.appendChild(newnode);
+ 
+          
+</script> 
+
+</body>
+</html>

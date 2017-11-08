@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Retro Snaker</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div id="container">
+		<h2>基于HTML5的贪食蛇</h2>
+		<hr>
+		<div id="status">
+			<div class="box">
+				历史最高分:<span id="bestScore">0</span>
+			</div>
+			<div class="box">
+				第<span id="rank">0</span>关
+			</div>
+			<div class="box">
+				当前分数:<span id="currentScore">0</span>
+			</div>
+		</div>
+		<canvas id="Canvas" width="400" height="400" style="border: 10px solid">Sorry, your browser doesn't support this canvas.</canvas>
+		<div>
+			<button onclick="reset()">
+				重新开始
+			</button>
+		</div>
+	</div>
+	<script type="text/javascript" src="script.js"></script>
+</body>
+</html>

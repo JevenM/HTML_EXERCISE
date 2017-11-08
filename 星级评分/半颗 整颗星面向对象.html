@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>半颗星-评分</title>
+	<style>
+		body, ul, li{
+			padding: 0;
+			margin: 0;
+		}
+		li {
+			list-style: none;
+		}
+		.rating {
+			width: 160px;
+			height: 32px;
+			margin: 100px auto;
+		}
+		.rating-item{
+			float: left;
+			width: 32px;
+			height: 32px;
+			background: url(rating.png) no-repeat;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<ul class="rating" id="rating">
+		<li class="rating-item" title="很不好"></li>
+		<li class="rating-item" title="不好"></li>
+		<li class="rating-item" title="一般"></li>
+		<li class="rating-item" title="好"></li>
+		<li class="rating-item" title="很好"></li>
+	</ul>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript">
+	var rating = (function(){
+		//点亮整颗星
+		var lightEntire = function(el,option){
+			this.$el = $(el);
+			this.$item = this.$el.find('.rating-item');
+			this.opts = option;
+		}
+		lightEntire.prototype.init = function() {
+			this.lightOn(this.opts.num);
+			if(!this.opts.readOnly){
+				this.bindEvent();
+			}
+		};
+		lightEntire.prototype.lightOn = function(num){
+			num = parseInt(num);
+			this.$item.each(function(index){
+						if(index < num){
+							$(this).css('background-position','0 -32px');
+						}
+						else{
+							$(this).css('background-position','0 0');
+						}
+				});
+		}
+		lightEntire.prototype.bindEvent = function(){
+			var self = this;
+			var itemLength = self.$item.length;
+			self.$item.on('mouseover',function(){
+				var num = $(this).index()+1;
+				self.lightOn(num);
+				//短路符号&&，只有前面的成立才会执行后面的内容
+				(typeof self.opts.select === 'function') && self.opts.select.call(this,num,itemLength);
+				//call表示指向本身对象
+				self.$el.trigger('select',[num,itemLength]);//添加事件
+			}).on('click',function(){
+				self.opts.num = $(this).index()+1;
+				(typeof self.opts.chosen === 'function') && self.opts.chosen.call(this,self.opts.num,itemLength);
+				self.$el.trigger('chosen',[self.opts.num,itemLength])
+			});
+
+			self.$el.on("mouseout",function(){
+				self.lightOn(self.opts.num);
+			});
+		}
+
+
+		//点亮半颗星
+		var lightHalf = function(el,option){
+			this.$el = $(el);
+			this.$item = this.$el.find('.rating-item');
+			this.opts = option;
+			this.add = 1;
+		}
+		lightHalf.prototype.init = function() {
+			this.lightOn(this.opts.num);
+			if(!this.opts.readOnly){
+				this.bindEvent();
+			}
+		};
+		lightHalf.prototype.lightOn = function(num){
+			var count = parseInt(num),
+				isHalf = (count != num);
+
+			this.$item.each(function(index){
+						if(index < count){
+							$(this).css('background-position','0 -32px');
+						}
+						else{
+							$(this).css('background-position','0 0');
+						}
+				});
+			if(isHalf){
+				//.eq(index)是匹配到下标是index的元素
+				this.$item.eq(count).css("background-position","0 -64px")
+			}
+		}
+		lightHalf.prototype.bindEvent = function(){
+			var self = this;
+			var itemLength = self.$item.length;
+			self.$el.on('mousemove','.rating-item',function(e){
+				var $this = $(this),
+					num = 0;
+				if(e.pageX - $this.offset().left < $this.width() / 2){
+					self.add = 0.5;
+				}
+				else{
+					self.add = 1;
+				}
+				num = $this.index() + self.add;
+
+				self.lightOn(num);
+				//短路符号&&，只有前面的成立才会执行后面的内容
+				(typeof self.opts.select === 'function') && self.opts.select.call(this,num,itemLength);
+				//call表示指向本身对象
+				self.$el.trigger('select',[num,itemLength]);//添加事件
+			}).on('click','.rating-item',function(){
+				self.opts.num = $(this).index()+self.add;
+				(typeof self.opts.chosen === 'function') && self.opts.chosen.call(this,self.opts.num,itemLength);
+				self.$el.trigger('chosen',[self.opts.num,itemLength])
+			}).on("mouseout",function(){
+				self.lightOn(self.opts.num);
+			});
+		}
+
+		var defaults = {
+			mode:'lightEntire',
+			num:0,
+			readOnly:false,
+			select : function(){},
+			chosen : function(){}
+		};
+
+		var mode = {
+			'lightEntire':lightEntire,
+			'lightHalf':lightHalf
+		}
+
+		//初始化
+		var init = function(el, option){
+			option = $.extend({},defaults,option);
+			// new lightHalf(el,option).init();
+			if(!mode[option.mode]){
+				mode[option.mode] = 'lightEntire';
+			}
+			new mode[option.mode](el, option).init();
+		};
+
+		return {
+			init:init
+		};
+
+	})();
+
+	
+	//传入参数num=2,覆盖默认参数，通过修改初始化参数mode，来改变整颗/半颗星
+	rating.init('#rating',{
+		num:1.5,
+		mode:'lightHalf'
+	});
+
+	</script>
+</body>
+</html>

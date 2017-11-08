@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>视频直播平台</title>
+	<meta name="Keywords" content="" >
+	<meta name="Description" content="">
+	<meta name="Author" content="">
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background-color: #aaa;
+			overflow: hidden;
+		}
+		#video{
+			width: 610px;
+			height: 450px;
+			/*border: 2px solid red;*/
+			border-radius: 10px;
+			margin: 50px auto;
+			background: #fff;
+			overflow: hidden;
+		}
+		.video_top{
+			height: 50px;
+			/*background: blue;*/
+			line-height: 50px;
+		}
+		.video_top a{
+			text-decoration: none;
+			float: left;
+			margin: 0 0 0 20px;
+			color: #000;
+		}
+		.video_top p{
+			float: left;
+			margin-left: 180px;
+		}
+		.video_con{
+			width: 610px;
+			height: 350px;
+			background: #787878;
+		}
+		.video_footer{
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+		}
+		.video_footer a{
+			color: #000;
+			text-decoration: none;
+			margin: 0 20px;
+		}
+		#canvas{
+			position: absolute;
+			display: block;
+			right: 0;
+			bottom: 0px;
+			width: 300px;
+			height: 350px;
+			border: 2px solid red;
+		}
+	</style>
+</head>
+<body>
+	<div id="video">
+		<div class="video_top">
+			<a href="javascript:;" onclick="getPhoto()">|截图|</a>
+			<p>在线直播系统开发</p>
+		</div>
+		<div class="video_con">
+			<video id="myVideo" width="610" width="350" autoplay></video>
+		</div>
+		<div class="video_footer">
+			<a href="javascript:;" onclick="getMedia()">|打开摄像头|</a>
+		</div>
+	</div>
+	<canvas id="canvas" width="610" height="350"></canvas>
+	<script>
+	var myVideo = document.getElementById('myVideo');
+	var canvas = document.getElementById("canvas"); 
+		var ctx = canvas.getContext("2d");
+	// getUseMedia 兼容处理
+	navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+	function getMedia(){
+		//判断浏览器是否支持摄像头功能
+		if(navigator.getUserMedia){
+			navigator.getUserMedia({
+				'video' : true,//打开视频
+				'audio' : true//打开音频
+			},sucessFn,errorFn);//获取摄像头成功就执行sucessFn方法，否则errorFn函数 
+		}
+		else{
+			alert("您当前的浏览器不支持摄像头功能！")
+		}
+	}
+	//获取摄像头里的视频流，给video的src路径
+	//解析视频流路径
+	window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
+	function sucessFn(stream){
+		//如果是火狐浏览器
+		if(myVideo.mozSrcObject !== undefined)
+		{
+			myVideo.mozSrcObject = stream;
+		}
+		else{
+			myVideo.src = window.URL && window.URL.createObjectURL(stream) || stream;
+		}
+	}
+	function errorFn(ev){
+		alert("程序出错" + ev);
+	}
+	function getPhoto(){
+	ctx.drawImage(myVideo,0,0,610,350);
+	}
+	</script>
+</body>
+</html>

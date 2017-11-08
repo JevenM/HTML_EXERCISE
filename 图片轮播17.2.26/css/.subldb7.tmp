@@ -1,0 +1,22 @@
+<style type="text/css">
+* {
+	padding: 0px;
+	margin: 0px;
+}
+.banner{
+	margin: 100px;
+	background-color: red;
+	width: 100px;
+	height: 500px;
+}
+
+
+
+
+
+
+
+
+
+
+</style>

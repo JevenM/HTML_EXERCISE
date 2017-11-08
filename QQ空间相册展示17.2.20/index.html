@@ -1,0 +1,47 @@
+
+<!--目前的问题是无法实现点击哪张图片就立即显示哪张图片，而显示的是关闭之前记录的那张或者是第001张。-->
+
+<!DOCTYPE html>
+<html lang="en"><!--根目录标签-->
+<head>
+	<meta charset="UTF-8"><!--声明编码格式-->
+	<meta name="keywords" content="关键字">
+	<meta name="description" content="描述">
+	<title>QQ空间相册展示</title>
+	<link rel="stylesheet" type="text/css" href="css/空间相册.css" />
+</head>
+
+<body>
+	<div id="main">
+	<!-- <input type="button" name="slide" value="转换" onclick="fort()"> -->
+	<!-- <input type="button" name="div" value="DIV" onclick="makeDiv()"> -->
+	<ul onclick="makeDiv()">
+		<li><img src="images/001.jpg" width="288" height="180" alt="点击!" title="点击！" /></li> 
+		<li><img src="images/002.jpg" alt="点击" width="288" height="180"  /></li>
+		<li><img src="images/003.jpg" alt="点击" width="288" height="180"  /></li>
+		<li><img src="images/004.jpg" alt="点击" width="288" height="180"  /></li>
+		<li><img src="images/005.jpg" alt="点击" width="288" height="180" /></li>
+		<li><img src="images/006.jpg" alt="点击" width="288" height="180" /></li>
+		<li><img src="images/007.jpg" alt="点击" width="288" height="180" /></li>
+		<li><img src="images/008.jpg" alt="点击" width="288" height="180" /></li>
+		<li><img src="images/009.jpg" alt="点击" width="288" height="180" /></li>
+		<li><img src="images/010.jpg" alt="点击" width="288" height="180" /></li>
+		<li><img src="images/011.jpg" alt="点击" width="288" height="180" /></li>
+		<li><img src="images/012.jpg" alt="点击" width="288" height="180" /></li>
+	</ul>
+</div><!--盒子拥有宽高-->
+
+<div id="gray"></div>
+
+<div  id="img" class="showimage">
+	<img src="images/014.jpg" id="show_img" width="620" height="406" />
+	<img src="images/1.2.png" class="but_l" width="40" height="40" onclick="fort()" />
+	<img src="images/2.1.png" class="but_r" width="40" height="40" onclick="fort()" />
+	<input id="bt" type="button" name="" value="取消" onclick="disaplay()">
+	<script type="text/javascript" src="js/disaplay.js"></script>
+</div>
+
+</body>
+<script type="text/javascript" src="js/空间相册.js"></script>
+<script type="text/javascript" src="js/div.js"></script>
+</html>

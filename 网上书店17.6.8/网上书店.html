@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Online-Bookstore</title>
+	<meta name="keywords" content="" >
+	<meta name="description" content="" >
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="../jQuery/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="demo.js"></script>
+</head>
+<body>
+	<div id="header">
+		<a style="float:left;" href="#"><em>209网上书店欢迎您！</em></a>
+		<a href="#">注册</a>
+		<a href="#">您好，请登录</a>
+		<a href="shopcar.html">我的购物车</a>
+	</div>
+	<div id="music">
+		<audio  id="audio1" controls="controls">
+		<source src="dearchild.mp3" type="audio/mp3">
+	</div>
+	<div class="search">
+		<input class="s-text" type="text" placeholder="请输入搜索内容..." value="" />
+		<input class="s-con" type="button" value="搜 索" onclick="fun()" />
+		<div id="biao">
+			<table cellpadding='2' cellspacing='0'>
+			<tbody>
+        				<tr><td></td></tr>
+        				<tr><td></td></tr>
+        				<!-- <tr><td></td></tr>
+        				<tr><td></td></tr>
+        				<tr><td></td></tr> -->
+      			</tbody>
+      			</table>
+		</div>
+		
+	</div>
+	<div id="content">
+		<div class="d_0">
+			<div class="v_show">
+				<div class="v_caption">
+					<h2 class="cartoon" title="卡通动漫">[每日推荐]</h2>
+					<div class="highlight_tip">
+						<div class="current d_list" id="d_1"></div>
+						<div class="d_list" id="d_2"></div>
+						<div class="d_list" id="d_3"></div>
+						<div class="d_list" id="d_4"></div>
+					</div>
+					<div class="change_btn">
+						<a href="#" class="direct prev">◁</a>
+						<a href="#" class="direct next">▷</a>
+					</div>
+					<em><a  class="more" href="#">更多>></a></em>
+				</div><!--v_caption-->
+				<div class="v_content">
+					<div class="v_content_list">
+						<ul>
+						<li class="li"><a class="aaa" href="#" ><img onclick="book1()" src="cong.jpg" width="188" height="150" alt="" title="&nbsp;&nbsp;销量：28,276" /><span>￥：28.8</span><span>《从你的全世界路过》</span></a></li>
+						<li class="li"><a class="aaa" href="#" ><img onclick="book2()" src="bai.jpg" width="188" height="150" alt="" title="&nbsp;&nbsp;销量：35,140" /><span>￥：20.8</span><span>《摆渡人》</span></a></li>
+						<li class="li"><a class="aaa" href="#" ><img onclick="book3()" src="shi.jpg" width="188" height="150" alt="" title="&nbsp;&nbsp;销量：47,102" /><span>￥：50.0</span><span>《世界上的另一个你》</span></a></li>
+						<li class="li"><a class="aaa" href="#" ><img onclick="book4()" src="zui.jpg" width="188" height="150" alt="" title="&nbsp;&nbsp;销量：10,120" /><span>￥：34.0</span><span>《十宗罪》</span></a></li>
+						<li class="li"><a class="aaa" href="#" ><img src="ye.jpg" width="188" height="150" alt="" title="&nbsp;&nbsp;销量：28,276" /><span>￥：34.0</span><span>《灯火夜微明》</span></a></li>
+						<li class="li"><a class="aaa" href="#" ><img src="mu.jpg" width="188" height="150" alt="" title="&nbsp;&nbsp;销量：35,14" /><span>￥：34.0</span><span>《母亲》</span></a></li>
+						<li class="li"><a class="aaa" href="#" ><img src="zhui.jpg" width="188" height="150" alt="" title="&nbsp;&nbsp;销量：47,102" /><span>￥：34.0</span><span>《追风筝的人》</span></a></li>
+						<li class="li"><a class="aaa" href="#" ><img src="cheng.jpg" width="188" height="150" alt="" title="&nbsp;&nbsp;销量：10,120" /><span>￥：34.0</span><span>《城南旧事》</span></a></li>
+						<li class="li"><a class="aaa" href="#" ><img src="jie.jpg" width="188" height="150" alt="" title="&nbsp;&nbsp;销量：28,276" /><span>￥：34.0</span><span>《解忧杂货店》</span></a></li>
+						<li class="li"><a class="aaa" href="#" ><img src="san.jpg" width="188" height="150" alt="" title="&nbsp;&nbsp;销量：35,14" /><span>￥：34.0</span><span>《三体》</span></a></li>
+						<li class="li"><a class="aaa" href="#" ><img src="ci.jpg" width="188" height="150" alt="" title="&nbsp;&nbsp;销量：47,102" /><span>￥：34.0</span><span>《刺客信条》</span></a></li>
+						<li class="li"><a class="aaa" href="#" ><img src="ha.jpg" width="188" height="150" alt="" title="&nbsp;&nbsp;销量：10,120" /><span>￥：34.0</span><span>《哈利波特》</span></a></li>
+						<li class="li"><a class="aaa" href="#" ><img src="quan.jpg" width="188" height="150" alt="" title="&nbsp;&nbsp;销量：28,276" /><span>￥：34.0</span><span>《全职高手》</span></a></li>
+						<li class="li"><a class="aaa" href="#" ><img src="long.jpg" width="188" height="150" alt="" title="&nbsp;&nbsp;销量：35,14" /><span>￥：34.0</span><span>《龙族III》</span></a></li>
+						<li class="li"><a class="aaa" href="#" ><img src="dao.jpg" width="188" height="150" alt="" title="&nbsp;&nbsp;销量：47,102" /><span>￥：34.0</span><span>《盗墓笔记1-9》</span></a></li>
+						<li class="li"><a class="aaa" href="#" ><img src="zuihao.jpg" width="188" height="150" alt="" title="&nbsp;&nbsp;销量：10,120" /><span>￥：34.0</span><span>《最好的我们》</span></a></li>
+						</ul>
+					</div>
+				</div><!--v_content-->
+			</div><!--v_show-->
+		</div><!--d_0-->
+		<div class="d_1">
+			<div id="tabs">
+    				<ul>
+       					<li class="on">文学</li>
+        					<li>童书</li>
+        					<li>教育</li>
+        					<li>经管</li>
+        					<li>励志</li>
+        					<li>生活</li>
+        					<li>艺术</li>
+        					<li>科技</li>
+        					<li>电脑</li>
+    				</ul>
+					
+    				<div>
+        					<a href="">小说</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">浪漫</a><br>
+        					<a href="">文学</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">悬疑</a><br>
+        					<a href="">青春</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">科幻</a><br>
+        					<a href="">纪实</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">散文随笔</a><br>
+        					<a href="">畅销榜</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">名家作品</a><br>	
+    				</div>
+    				<div class="hide">
+        					<a href="">0-2</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">3-6</a><br>
+        					<a href="">7-10</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">11-14</a><br>
+        					<a href="">科普百科</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">儿童文学</a><br>
+        					<a href="">幼儿启蒙</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">动漫卡通</a><br>
+        					<a href="">DK</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">推荐书单</a><br>	
+    				</div>
+    				<div class="hide">
+        					<a href="">教辅</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">中级会计</a><br>
+        					<a href="">外语</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">程序员</a><br>
+        					<a href="">考试</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">软件设计师</a><br>
+        					<a href="">教材</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">课外读物</a><br>
+        					<a href="">字典</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">司法考试</a><br>	
+    				</div>
+    				<div class="hide">
+        					<a href="">管理</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">经济</a><br>
+        					<a href="">投资</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">推荐书单</a><br>
+        					<a href="">一带一路</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">产品经理</a><br>
+        					<a href="">魔鬼经济学</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">大数据</a><br>
+        					<a href="">个人理财</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">世界经济</a><br>	
+    				</div>
+    				<div class="hide">
+        					<a href="">社交</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">思维导图</a><br>
+        					<a href="">鸡汤</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">推荐书</a><br>
+        					<a href="">人性的弱点</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">职场能力</a><br>
+        					<a href="">时间管理</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">青少年励志</a><br>
+        					<a href="">人在职场</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">长成大人</a><br>	
+    				</div>
+    				<div class="hide">
+        					<a href="">育儿家教</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">美食</a><br>
+        					<a href="">地图</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">化妆术</a><br>
+        					<a href="">健身保健</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">旅游</a><br>
+        					<a href="">家教方法</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">素质教育</a><br>
+        					<a href="">菜谱</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">推荐书单</a><br>	
+    				</div>
+    				<div class="hide">
+        					<a href="">绘画</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">书法</a><br>
+        					<a href="">摄影</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">音乐</a><br>
+        					<a href="">连环画</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">服装设计</a><br>
+        					<a href="">田英章</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">建筑艺术</a><br>
+        					<a href="">平面设计</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">钢琴   吉他</a><br>	
+    				</div>
+    				<div class="hide">
+        					<a href="">科普</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">工业</a><br>
+        					<a href="">建筑</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">互联网</a><br>
+        					<a href="">交通</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">电子元件</a><br>
+        					<a href="">航天航空</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">汽车生活</a><br>
+        					<a href="">制表工业</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">推荐书单</a><br>	
+    				</div>
+    				<div class="hide">
+        					<a href="">编程语言</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">办公软件</a><br>
+        					<a href="">移动开发</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">云计算</a><br>
+        					<a href="">数据库</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">创客必读</a><br>
+        					<a href="">web 网页制作</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">机器学习</a><br>
+        					<a href="">人工智能</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">推荐书单</a><br>	
+    				</div>
+			</div><!--tabs-->
+		</div><!--d_1-->
+		
+		<div class="d_2">
+<!-- 			<input type="button" name="button" id="send" value="Ajax 获取" /> -->
+			<div class="comment">书籍信息:</div>
+			<div id="resText"></div>
+		</div><!--d_2-->
+	</div>
+	<div id="footer">
+		<p>Copyright © 2017 毛文杰. All Rights Reserved.</p>
+	</div>
+<!-- 	以下代码只能写在这里，不能写到外部js文件中！！！！！！！！！！！！！！！！！ -->
+	<script type="text/javascript">
+		function hideTds() 
+		      {
+		        	var tds = document.querySelectorAll('td');
+		        	for (var i = 0; i < tds.length; i++) {
+		         	tds[i].style.display = 'none';
+		      	}
+		      }
+		hideTds();
+		document.querySelector('.s-text').onkeyup = function(){
+		        var tds = document.querySelectorAll('td');
+		        for (var i = 0; i < 2; i++) {
+		        tds[i].innerHTML = '';
+		      }
+	 	hideTds();
+		if (this.value.trim() === '') 
+		{
+		          return;
+		 }
+		        
+		        var s = document.createElement('script');
+		        s.src = 'http://unionsug.baidu.com/su?wd=' + encodeURI(this.value.trim()) + '&p=3&cb=fn';
+		        document.body.appendChild(s);
+		      };
+		      function fn(data) {
+		        var tds = document.querySelectorAll('td');
+		        data.s.forEach(function(item, index) {
+		          tds[index].style.display = '';
+		          tds[index].innerHTML = item;
+		        });
+		        // delete scripts
+		        var s = document.querySelectorAll('script');
+		        for (var i = 1, len = s.length; i < len; i++) {
+		          document.body.removeChild(s[i]);
+		        }
+		      }
+		      document.querySelector('tbody').onclick = function(e) {
+		        var wd = e.target.innerHTML;
+		        window.open('https://www.baidu.com/s?word=' + encodeURI(wd));
+		      };
+		      document.onclick = function(e) {
+		        if (e.target === document.body) {
+		          hideTds();
+		        }
+		      }
+		      function fun() {
+		      var wd =  document.querySelector('.s-text').value;
+		      window.open('https://search.jd.com/Search?keyword=' + encodeURI(wd)+'&enc=utf-8');
+		      };
+
+		// var domainroot="file:///D:/%E4%BE%BF%E6%8D%B7/html/%E7%BD%91%E4%B8%8A%E4%B9%A6%E5%BA%97/%E7%BD%91%E4%B8%8A%E4%B9%A6%E5%BA%97.html"//个人站点域名，替换成你的网站的网址即可 
+		// function Gsitesearch(curobj){ 
+		// curobj.q.value="site:"+domainroot+" "+curobj.qfront.value 
+		// } 
+			function book1(){
+				$("#resText").load("book1.html");
+			};
+			function book2(){
+				$("#resText").load("book2.html");
+			};
+			function book3(){
+				$("#resText").load("book3.html");
+			};
+			function book4(){
+				$("#resText").load("book4.html");
+			};
+	</script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>IndexedDB</title>
+	<script type="text/javascript" src="../../jQuery/jquery.min.js"></script>
+	<style type="text/css">
+		table{
+			border: 0;
+			margin: 0;
+			border-collapse: collapse;
+			/*边框合并属性*/
+		}
+		table td{
+			padding: 3px;
+		}
+	</style>
+	<script type="text/javascript">
+	var db;
+	$(function(){
+		window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+		if(!window.indexedDB){
+			alert("您的浏览器不支持indexedDB");
+		}
+		//打开数据库
+		var req = window.indexedDB.open("MyDatabase");
+		req.onsuccess = function(e){
+			db = this.result;
+		};
+		req.onerror = function(e){
+			$("div").html("打开数据库错误:"+e.target.errorCode);
+		};
+		//onupgradeneeded事件
+		req.onupgradeneeded = function(e){
+			//创建objectStore
+			var objectStore = e.target.result.createObjectStore("customer",{keyPath:"user_id"});
+			objectStore.createIndex("name","name",{unique:false});
+			objectStore.createIndex("birthday","birthday",{unique:false});
+
+			//新增数据
+			const customerData = [
+				{user_id:"A001",name:"Eileen",birthday:"1990/05/05"},
+				{user_id:"A002",name:"Brian",birthday:"1992/08/13"},
+				{user_id:"A003",name:"Andy",birthday:"1989/09/15"},
+				{user_id:"A004",name:"Jennifer",birthday:"1995/01/11"},
+				{user_id:"A005",name:"Mark",birthday:"1998/02/28"}
+			];
+			for(var i in customerData){
+				objectStore.add(customerData[i]);
+			}
+		};
+		$("#findbtn").click(function(){
+			find_data($("#name").val(),$("#birthday_s").val(),$("#birthday_e").val(),$("#sorting:checked").val());
+		});
+	})
+	function find_data(name,births,birthe,sorting){
+		$("div").empty();
+		var transaction = db.transaction("customer","readwrite");
+		var store = transaction.objectStore("customer");
+		//搜索姓名
+		if(name != ""){
+			range = IDBKeyRange.bound(name,name+'\uffff',false,false);
+		}
+		index = store.index("name");
+		var request = index.openCursor(range,sorting);
+		//搜索生日
+		if(births!= "" || birthe != ""){
+			if(births!= "" && birthe != ""){
+				range = IDBKeyRange.bound(births,birthe,false,false);
+			}
+			else if(births == ""){
+				range = IDBKeyRange.upperBound(birthe,false);
+			}
+			else{
+				range = IDBKeyRange.lowerBound(births,false);
+			}
+			index = store.index("birthday");
+			var request = index.openCursor(range,sorting);//此request覆盖了搜索姓名里面的request
+		}
+		var str = "查询结果：<table border=1><tr><tr><th>账号</td><th>姓名</td><th>生日</td></tr>";
+		request.onsuccess = function(e){
+			var cursor = e.target.result;
+			if(cursor){
+				str+="<tr><td>"+cursor.value.user_id+"</td><td>"+cursor.value.name+"</td><td>"+cursor.value.birthday+"</td></tr>";
+				cursor.continue();
+			}else{
+				str+="</table>";
+				$("div").html(str);
+			}
+		};
+		request.onerror = function(e){
+			$("div").html(e.target.error);
+		}
+	}
+	</script>
+</head>
+<body>
+	搜索条件：<br>
+	姓名：<input type="text" id="name"><br>
+	生日：<input type="date" name="" id="birthday_s" value="1990/01/01">~<input type="date" name="" id="birthday_e" value="1995/12/01"><br>
+	<input type="radio" name="sorting" id="sorting" value="prev" checked="checked">从大到小
+	<input type="radio" name="sorting" id="sorting" value="next">从小到大<br>
+	<button id="findbtn">发送查询</button>
+	<div id="message"></div>
+</body>
+</html>

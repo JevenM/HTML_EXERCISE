@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>网上书店</title>
+	<style type="text/css">
+		*{
+			padding: 0px;
+			margin: 0px;
+		}
+		body{
+			background-image:url(4.jpg);
+			background-repeat: no-repeat;
+		}
+		#img1{
+			cursor: pointer;
+			display: block;
+			margin: 200px auto 15px;
+			width: 180px;
+			height: 180px;
+			border-radius: 90px;
+		}
+		#text1{
+			display: block;
+			margin: 30px auto 20px;
+			height: 35px;
+			width: 265px;
+			border: 3px solid #999;
+			font-size: 16px;
+			padding: 0px 8px 0px 8px;
+		}
+		#p2{
+			cursor: pointer;
+			text-align: center;
+			font-family: "圆体";
+			font-weight: lighter;
+			letter-spacing: 2px;
+			font-size: 50px;
+			color: white;
+		}
+		#a1{
+			text-decoration: none;
+		}
+		#p1{
+			cursor: pointer;
+			text-align: center;
+			color: #fff;	
+			font-size: 18px;
+		}
+		#imgg{
+			height: 30px;
+			position: absolute;
+			display: block;
+			top: 495px;
+			left: 880px;
+		}
+		#p2{
+			cursor: pointer;
+			text-align: center;
+		}
+	</style>
+	<script type="text/javascript">
+		function globelQuery()
+		{
+			var pass = document.getElementById("text1")
+
+				e = window.event||arguments.callee.caller.arguments[0];
+				if (e.keyCode == 13)
+				{
+					if (pass.value == 0000) 
+					document.getElementById("a1").click();
+				    	else
+					{
+						alert("密码错误！");
+					}
+				}
+		}
+		function a(){
+			var pass = document.getElementById("text1");
+			if (pass.value == 0000) 
+					document.getElementById("a1").click();
+				    	else
+					{
+						alert("密码错误！");
+					}
+		}
+	function showhello()
+	{
+		var now = new Date();
+		var hour = now.getHours();
+		if (hour < 6&&hour >= 0)
+		{
+			alert("凌晨好！");			
+		}
+	 	if(hour < 9&&hour >= 6)
+		{
+			alert("早上好！");
+		}
+		else if(hour < 12&&hour >= 9)
+		{
+			alert("上午好！");
+		}
+		else if(hour < 14&&hour >= 12)
+		{
+			alert("中午好！");
+		}
+		else if(hour < 17&&hour >= 14)
+		{
+			alert("下午好！");
+		}
+		else if(hour < 19&&hour >=17)
+		{
+			alert("傍晚好！");
+		}
+		else if(hour < 22&&hour >=19)
+		{
+			alert("晚上好！");
+		}
+		else if(hour >=22&&hour <= 23)
+		{
+			alert("夜里好！");
+		}
+	}
+	           showhello();/*进入页面时打招呼*/
+	</script>
+</head>
+<body>
+	<img id="img1" src="3.jpg">
+	<p id="p2">您好！</p>
+	<input id="text1" type="password" placeholder="PIN" maxlength="4" onfocus="this.type='password' autocomplete="off" onkeydown="globelQuery()" />
+	<img id="imgg" src="right.png" onclick="a()" />
+	<p id="p1">登录选项</p>
+	<a href="网上书店.html" id="a1"></a>
+</body>
+</html>

@@ -1,0 +1,26 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+#shareWarp{
+	width: 540px;
+	height: 300px;
+	margin: 50px auto;
+	padding: 20px;
+	overflow: hidden;
+	box-shadow: 0 0 4px #222;
+}
+#shareWarp p{
+	text-indent: 2em;
+}
+#imgSina{
+	width: 20px;
+}
+#imgQQ{
+	width: 20px;
+}
+.share{
+	display: none;
+	position: absolute;
+	cursor: pointer;
+}

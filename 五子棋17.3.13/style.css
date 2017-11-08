@@ -1,0 +1,52 @@
+
+h1{
+	text-align: center;
+	font-family: "隶书";
+	font-size: 40px;
+	/*letter-spacing: 10px;*/
+}
+h2{
+	text-align: center;
+}
+#chess{
+	/*position: relative;*/
+	display: block;
+	margin: 30px auto;
+	box-shadow: -2px -2px 2px #efefef,5px 5px 5px #b9b9b9;
+	background: #3cb371;
+}
+#btn{
+	position: absolute;
+	left: 1100px;
+	top: 170px;
+	margin: 20px auto;
+	width: 200px;
+	height: 400px;
+	/*background: red;*/
+	/*border: 1px solid #636788;*/
+}
+#a{
+	position: absolute;
+	left: 70px;
+	top: 20px;
+}
+.b{
+	position: absolute;
+	left: 70px;
+	top: 60px;
+}
+.c{
+	position: absolute;
+	left: 70px;
+	top: 100px;
+}
+.d{
+	position: absolute;
+	left: 70px;
+	top: 140px;
+}
+.e{
+	position: absolute;
+	left: 70px;
+	top: 180px;
+}

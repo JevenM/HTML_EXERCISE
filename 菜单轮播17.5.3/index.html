@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>菜单</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		body,html{
+			height: 100%;
+			background: url("images/bg.jpg");
+		}
+		body{
+			overflow: hidden;
+		}
+		li{
+			list-style: none;
+		}
+		#Box{
+			width: 90%;
+			height: 90%;
+			position: absolute;
+			left: 5%;
+			top: 5%;
+		}
+		#Box ul li{
+			width: 125px;
+			height: 125px;
+			box-shadow: 0 0 1px #000;
+			position: absolute;
+			border-radius: 10px;
+			transition: 1s left,1s top;
+			transform: rotate(-30deg);
+			cursor: pointer;
+		}
+		#Box ul li img{
+			transform: scale(0.9);
+			display: block;
+			border-radius: 10px;
+			transition: 1s transform;
+		}
+		#btn{
+			display: none;
+		}
+		#btn input{
+			position: fixed;
+			top: 50%;
+			height: 90px;
+			width: 40px;
+			margin-top:-45px;
+			cursor: pointer;
+			line-height: 90px;
+			background-color: rgba(222,222,222,0.6); 
+			border: 0;
+			font-size:30px;
+			font-family: "微软雅黑"; 
+		}
+		#btn input:hover{
+			background-color: rgba(0,0,0,0.5);
+			color: white;
+		}
+		#btn #left{
+			left: 0;
+			border-radius: 0 5px 5px 0;
+		}
+		#btn #right{
+			right: 0;
+			border-radius: 5px 0 0 5px;
+		}
+	</style>
+</head>
+<body>
+	<div id="Box">
+		<ul>
+			<li><img src="" alt=""></li>
+		</ul>	
+		<div id="btn">
+			<input type="button" id="left" value="<">
+			<input type="button" id="right" value=">">
+		</div>
+	</div>
+	<script type="text/javascript">
+		(function(){
+			var oUl = document.querySelector('#Box ul');
+			var oBox = document.querySelector("#Box");
+			var oBtn = document.querySelector("#btn");
+			var oInp = document.querySelectorAll("#btn input");	
+			var oLi,oImg;
+			var width = 125,height = 125;
+			var oLength = 24;
+			var liTime = 0;
+			var btnTime = 0;
+			var toggle = true;//true 是小图片，false是大图片
+			var index= 0 ;
+			var text="";
+			init();
+			oLi = document.querySelectorAll('#Box ul li');
+			oImg = document.querySelectorAll('#Box ul li img');
+			function init(){
+				for(var i=0;i<oLength;i++)
+				{
+					text+='<li><img src="images/'+(i+1)+'.jpg"/></li>';
+				}
+				oUl.innerHTML = text;
+			}
+			liposition();
+			liRot();
+			function liposition(){
+				var tW = oBox.offsetWidth;
+				var tH = oBox.offsetHeight;
+				var mL = (tW-6*width)/5;//左右间隙
+				var mT = (tH-4*height)/3;//上下
+				myEach(oLi,function(obj,i){
+					var iX = i%6;//取馍，确定列
+					var iY = parseInt(i/6);//取整，确定行
+					obj.style.left = iX*mL+width*iX+"px";
+					obj.style.top = iY*mT+height*iY+'px';
+					obj.style.backgroundPosition = -iX*width+'px '+(-iY*height)+'px';
+				})
+			}
+			function liRot()
+			{
+				myEach(oLi,function(obj){
+					var r = (Math.random()-0.5)*60;
+					obj.style.transform="rotate("+r+"deg)";
+				})
+			}
+			function myEach(elem,action){
+				for(var i=0;i<elem.length;i++)
+				{
+					action(elem[i],i);
+				}
+			}
+			function liClickP(){
+				var tW = oBox.offsetWidth;
+				var tH = oBox.offsetHeight;
+				var l = (tW-width*6)/2;
+				var t = (tH-height*4)/2;
+				myEach(oLi,function(obj,i){
+					var iX = i%6;
+					var iY = parseInt(i/6);
+					obj.style.left = l+iX*width+'px';
+					obj.style.top = t+iY*height+'px';
+					obj.style.transition = '1s transform ,1s left ,1s top';
+					obj.style.transform = 'rotate(0deg)';
+				})
+			}
+			myEach(oLi,function(obj,i){
+				(function(x){
+					obj.onclick = function(){
+						if(new Date()-liTime>2000){
+							liTime=new Date();
+							if(toggle){
+								index=x;
+								myEach(oLi,function(obj){
+									obj.style.borderRadius = '0';
+								})
+								myEach(oImg,function(obj){
+									obj.style.transform='scale(1)';
+									obj.style.borderRadius='0';
+								})
+								setTimeout(function(){
+									liClickP();
+									var op = 10;
+									var timer = setInterval(function(){
+										op--;
+										if(op<=0){
+											op=0;
+											myEach(oImg,function(obj){
+												obj.style.opacity='0';
+												obj.style.display = 'none';
+											})
+											liClickP();
+											oBtn.style.display = 'block';
+											clearInterval(timer);
+
+										}
+										myEach(oImg,function(obj){
+											obj.style.opacity = op/10;
+										})
+									},100)
+									myEach(oLi,function(obj){
+										obj.style.backgroundImage = 'url(images/big/'+(index+1)+'.jpg)';
+									})
+									liposition();
+									oBtn.style.display = 'block';
+									toggle = !toggle;
+								},1000)
+							}
+							else{
+								var op = 1;
+								var timer = setInterval(function(){
+									
+									op++;
+									if(op>=10)
+									{
+										op=10;
+										myEach(oImg,function(obj){
+											obj.style.opacity='1';
+											obj.style.display = 'block';
+											obj.style.transform = 'scale(0.9)';
+											obj.style.borderRadius = '10';
+										})
+										myEach(oLi,function(obj){
+											obj.style.backgroundImage = '';
+											obj.style.borderRadius = '10';
+										})
+										clearInterval(timer);
+									}
+									myEach(oImg,function(obj){
+										obj.style.opacity = op/10;
+									})
+								},100)
+								liposition();
+								oBtn.style.display = 'none';
+								liRot();
+								toggle = !toggle;
+							}
+						}
+					}
+				})(i)
+			})
+			oInp[0].onclick = function(){
+				if(new Date()-btnTime>800)
+				{
+					btnTime = new Date();
+					index--;
+					index = (index<0)?oLength-1:index;
+				}
+				liBackground();
+			}
+			oInp[1].onclick = function(){
+				if(new Date()-btnTime>800)
+				{
+					btnTime = new Date();
+					index++;
+					index %= oLength;
+				}
+				liBackground();
+			}
+			function liBackground(){
+				var arr=[];
+				for(var i=0;i<oLength;i++)
+				{
+					arr[i] = i;
+				}
+				var timer1 = setInterval(function(){
+					var r= Math.floor(Math.random()*arr.length);//r:0-23随机数
+					oLi[arr[r]].style.backgroundImage= 'url(images/big/'+(index+1)+'.jpg)';
+					arr.splice(r,1);//从数组里面删除
+					if(!arr.length)
+					{
+						clearInterval(timer1);
+					}
+				},30);
+			}
+		})();
+	</script>
+</body>
+</html>

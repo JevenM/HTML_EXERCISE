@@ -1,0 +1,104 @@
+<style type="text/css">
+	/*css层叠样式列表 美化页面*/
+	*{
+		margin: 0px;
+		padding: 0px;
+	}/*通配符*作用于所有元素 不同浏览器之间的兼容性*/
+	#main{
+		width: 1320px;
+		height: 690px;
+		background: #fff;
+		/*background-color 背景颜色
+		  background-image 背景图片
+		*/
+		margin: 30px auto 0px;
+		padding-right: 30px;
+	}
+	#main ul li{
+		list-style-type: none;
+		float:left;
+		width: 288px;
+		height: 180px;
+		border:4px solid #fff;
+		margin:10px 10px;
+		box-shadow: 5px 5px 10px #000;
+		cursor:pointer;
+	}
+	#main ul li:hover img
+	{
+		position: absolute;
+		/*filter:alpha(Opacity=70);
+		-moz-opacity:0.7;
+		opacity: 0.9;*/
+		border: 3px #999 solid;
+		box-shadow: 3px 3px 3px #333;
+		padding: 10px 20px;
+		background: white;
+		transform:scale(2);
+		transition: transform 0.7s /*ease-in*/ ease-in-out;
+		left: 50%;
+		top: 50%;
+		margin-left: -169px;
+		margin-top: -120px;
+		/*filter: blur(2px);*/
+	}
+	#gray{
+		width: 100%;
+		height: 100%;
+		background:rgba(0,0,0,0.7);/*三基色 red green blue 0-255+透明度 0-1*/
+		position:fixed;/*固定定位*/
+		top: 0px;
+		left: 0px; 
+		display: none;
+		z-index: 2;
+	}
+	#bt{
+		display: block;
+		position: absolute;
+		margin: 20px 0px;
+	}
+	.showimage{
+		width: 620px;
+		height:406px;
+		background:white;
+		position: absolute;/*改变盒子的定位，绝对*/
+		top: 150px;
+		left: 50%;/*屏幕的一半的位置*/
+		margin-left:-310px;/*屏幕的一半的位置,向左移动600/2的像素*/
+		padding:5px;
+		display: none;
+		z-index: 2;
+	}
+	.showimage img.but_l{
+		position: absolute;
+		top: 170px;
+		left: -70px;
+		cursor: pointer;
+	}/*预览后的左箭头*/
+	.showimage img.but_l:hover
+	{
+		position: absolute;
+		top: 170px;
+		left: -70px;
+		cursor: pointer;
+		display: block;
+		transform: scale(2);
+		transition: transform 0.5s /*ease-in*/ ease-in-out;
+	}/*预览后的左箭头*/
+	.showimage img.but_r{
+		position: absolute;
+		top: 170px;
+		right: -70px;
+		cursor: pointer;
+	}/*预览后的右箭头*/
+	.showimage img.but_r:hover
+	{
+		position: absolute;
+		top: 170px;
+		right: -70px;
+		cursor: pointer;
+		display: block;
+		transform: scale(2);
+		transition: transform 0.5s /*ease-in*/ ease-in-out;
+	}/*预览后的右箭头*/
+</style>

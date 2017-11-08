@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Video</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="course">
+	<video id="screen" width="640" src="XA.mp4" controls autoplay>Sorry, your broswer doesn't suport HTML5 Video.</video>
+	
+	<ul>
+		<li><!-- 课程标题 -->
+			<h3>欧洲简史</h3>
+		</li>
+		<hr>
+		<li onclick="playCourse(60)">
+			<img src="play.png">
+			<span>早期基督美术建筑</span>
+		</li>
+		<hr>
+		<li onclick="playCourse(120)">
+			<img src="play.png">
+			<span>早期基督美术绘画</span>
+		</li>
+		<hr>
+		<li onclick="playCourse(220)">
+			<img src="play.png">
+			<span>早期基督美术拜占庭</span>
+		</li>
+		<hr>
+		<li onclick="playCourse(320)">
+			<img src="play.png">
+			<span>早期基督美术镶嵌画</span>
+		</li>
+	</ul>
+</div>
+	<script type="text/javascript">
+	var screen = document.getElementById('screen');
+
+	function playCourse(time){
+		screen.currentTime = time;
+		screen.play();
+	}
+	</script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>天猫购物车</title>
+	<meta name="keywoeds" content="购物车，天猫，淘宝，京东" />
+	<meta charset="utf-8">
+	<meta name="desription" content="模仿购物车，实现选择商品加入购物车的功能">
+	<style type="text/css">
+		div,p,a,img,em,body,ul,li,dl,dt,dd,span,input{
+			padding: 0;
+			margin: 0;
+		}
+		.banner{
+			height: 160px;
+			background: url("images/banner.jpg");
+		}
+		.prct{
+			width: 1000px;
+			height: 310px;
+			/*background: gray;*/
+			margin: 50px auto 0;
+		}
+		.prct ul .box{
+			width: 220px;
+			height: 290px;
+			border: 1px solid #ccc;
+			list-style: none;
+			float: left;
+			margin: 2px 9px 0;
+			padding: 5px;
+			background: #fff;
+			box-shadow: 5px 5px 5px #666;
+		}
+		.prct ul .box img{
+			width: 220px;
+			height: 220px;
+		}
+		.prct ul .box .title{
+			font-size: 12px;
+			color: #666;
+			line-height: 20px;
+			text-align: center;
+		}
+		.prct ul .box .money{
+			margin-left: 5px;
+			font-size: 15px;
+			color: red;
+			float: left;/*变成块元素*/
+			/*display: block;*/
+			margin-top: 10px;
+		}
+		.prct ul .box .add-btn{
+			background: red;
+			float: right;
+			color: #fff;
+			margin-top: 10px;
+			margin-right: 5px;
+			padding: 5px 10px;
+			border-radius: 5px;
+			font-size: 12px; 
+			cursor: pointer;
+		}
+		.car{
+			width: 260px;
+			height: 100%;
+			background: red;
+			position: fixed;
+			right: -240px;/*隐藏着*/
+			top: 0;
+		}
+		.car .left{
+			width: 20px;
+			height: 100%;
+			background: #333;
+			float: left;
+		}
+		.car .left span{
+			color: #fff;
+			display: block;
+			font-size: 12px;
+			width: 12px;
+			padding: 15px 4px;
+			background: red;
+			cursor: pointer;
+			margin-top: 300px;
+		}
+		.car .right{
+			position: relative;
+			width: 240px;
+			height: 100%;
+			background: #ccc;
+			float: right;
+			overflow: scroll;
+		}
+		.car .right dl{
+			height: 60px;
+			border-bottom: 1px solid #fff;
+			padding: 5px;
+		}
+		.car .right dl dt{
+			float: left;
+		}
+		.car .right dl dt img{
+			width: 60px;
+			height: 60px;
+		}
+		.car .right dl dd{
+			float: right;
+			width: 140px;
+			font-size: 12px;
+			line-height: 20px;
+		}
+		.rebtn{
+			margin: 0 20px;
+			background: #888;
+			border: 1px solid #fff;
+			cursor: pointer;
+			color: #fff;
+			float: right;
+		}
+		.car .right dl .ddm{
+			color: red;
+		}
+		.fly{
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+		}
+		.textt{
+			color: red;
+			border: 0;
+			background: #ccc;
+			position: absolute;
+			top: 693px;
+			right: 140px;
+			z-index: 99;
+		}
+		.plus{
+			position: absolute;
+			top: 690px;
+			border: 1px solid #fff;
+			background: red;
+			cursor: pointer;
+			font-size: 12px;
+			color: #fff;
+			right: 30px;
+			z-index: 100;
+		}
+	</style>
+</head>
+<body>
+	<div class="banner"></div>
+	<div class="prct">
+		<ul>
+			<li class="box">
+				<img src="images/1.jpg" width="430" height="430" alt="女装1">
+				<p class="title">2015夏季海澜之家女装正品1</p>
+				<span class="money">￥193.0</span>
+				<span class="add-btn">添加到购物车</span>
+			</li>
+			<li class="box">
+				<img src="images/2.jpg" width="430" height="430" alt="女装2">
+				<p class="title">2015夏季海澜之家女装正品2</p>
+				<span class="money">￥63.0</span>
+				<span class="add-btn">添加到购物车</span>
+			</li>
+			<li class="box">
+				<img src="images/3.jpg" width="430" height="430" alt="女装3">
+				<p class="title">2015夏季海澜之家女装正品3</p>
+				<span class="money">￥402.0</span>
+				<span class="add-btn">添加到购物车</span>
+			</li>
+			<li class="box">
+				<img src="images/4.jpg" width="430" height="430" alt="女装4">
+				<p class="title">2015夏季海澜之家女装正品4</p>
+				<span class="money">￥100.0</span>
+				<span class="add-btn">添加到购物车</span>
+			</li>
+		</ul>
+	</div>
+	<div class="car">
+		<div class="bot"><!-- 底部合计框 -->
+			<input type="text" class="textt" placeholder="总和"  size="8" value="" readonly="true" />
+			<input type="button" class="plus" value="合计" />
+		</div>
+		<div class="left"><span class="btn">购物车</span></div>
+		<div class="right">
+			<!-- <dl>
+				<dt>
+					<img src="images/1.jpg" width="430" height="430" alt="女装1" />
+				</dt>
+				<dd>2015夏季海澜之家女装正品1</dd>
+				<dd >¥193.0</dd>
+				
+			</dl> -->
+		</div>
+	</div>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/tz_fly.js"></script><!--抛物线封装函数-->
+	<script type="text/javascript">
+	//购物车点击打开/关闭
+		var offon = true;
+		$('.btn').click(function(){
+			if(offon)
+			{
+				$('.car').animate({right:0},500);
+				offon = false;
+			}else{
+				$('.car').animate({right:"-240px"},500);
+				offon = true;
+			}
+		});
+		$('.add-btn').click(function(e){
+			var imgsrc = $(this).siblings('img').attr('src');//获取标签属性
+			var txt = $(this).siblings('.title').html();
+			var mone = $(this).siblings('.money').html();
+			$('.right').append('<dl><dt><img src="'+imgsrc+'" width="430" height="430" alt="女装" /></dt><dd>'+txt+'</dd><dd class="ddm">'+mone+'<input type="button" class="rebtn" value="删除" /></dd></dl>');
+			//落脚点
+			var last_1 = $('.btn').offset().left,
+			      last_2 = $('.btn').offset().top;
+			//起始点
+			var x = e.clientX;//鼠标距离浏览器左边的值
+			var y = e.clientY;//鼠标距离浏览器上边的值
+			//创建对象
+			var flyer = $('<img src="'+imgsrc+'" class="fly" />');
+			//抛物线方法
+			flyer.fly({
+				start:{
+					left:x,
+					top:y
+				},end:{
+					left:last_1,
+					top:last_2,
+					width:20,
+					height:20
+
+				},onEnd:function(){
+					flyer.fadeOut('slow',function(){
+						$(this).remove();//清除script里面的对象
+					});
+				}
+			});
+			$('.rebtn').click(function(){
+				 $(this).parent().parent().remove();//除去<dl>里的所有元素
+			});
+			
+		});	
+		//点击合计计算出商品价格总和		
+			$('.plus').click(function(){
+
+				var t = '';//t是空字符串
+				var a = $("dl .ddm").text().split('￥');//以#为分割为数组a
+				for(i=0;i<a.length;i++){
+					t +=a[i];	
+				}
+				
+				var b = t.split('.');//把t按.分割为数组
+				var w=0;
+				for(var k =0;k<b.length;k++){
+					 w += parseInt(b[k]);//把每个数组元素转换为整形数字
+				}
+				if($('.right>dl').length>0){//判断right是否存在dl元素，如果大于一个就设置总和
+					$('.textt').val('￥'+w+'.0');	
+				}
+				else{//没有dl元素就设置为0，否则系统认为为’NaN‘
+					$('.textt').val('￥0.0');	
+				}
+				
+			});
+			//当DOM元素加载完的时候，就执行此代码
+			$(function(){
+				$('.textt').val('￥0.0');
+			});
+	
+	</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+div{
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 0;
+	padding-top: 10px;
+}
+#title{
+	margin-top: 10px;
+	color: white;
+}
+#box{
+	position: relative;
+	width: 250px;
+	height: 400px;
+	background-color: rgba(128,128,128,.7);/*颜色为#808080，透明度0.7*/
+	margin: 50px auto;
+	box-shadow: 5px 5px 5px #696969;
+}
+#CDimage img{
+	border-radius: 50%;
+	border: 1px solid black;
+}
+#CDimage img{
+	animation: rotete 10s infinite;
+	-webkit-animation:rotate 10s infinite;
+	animation-delay: 0;
+	animation-timing-function: linear;
+	/*下面的方法是用transform控制变换，但时间不能无限*/
+	/*transform:rotate(10240deg) scale(1) translate(0px,0px);
+	transition: transform 1000s linear;*/
+	cursor:pointer;
+/*	opacity:0.5;*/
+}
+#CDimage img:hover{
+	opacity: 0.7;
+	animation-play-state: paused;
+}
+@keyframes rotate{
+	from{transform:rotate(0deg) scale(1) translate(0px,0px);}
+	to{transform:rotate(360deg) scale(1) translate(0px,0px);}
+}
+img{
+	border: 0;
+}
+button{
+	background: transparent;
+	border: 0;
+	outline: 0;
+	margin-left:3px;
+	margin-right: 3px;
+	margin-top: 0;
+	margin-bottom: 0;
+	padding: 0;
+	cursor: pointer;
+}
+button:hover{
+	opacity: 0.7;
+	transform:rotate(0) scale(1.1) translate(0px,0px);
+	transition: transform 0.2s linear;
+}

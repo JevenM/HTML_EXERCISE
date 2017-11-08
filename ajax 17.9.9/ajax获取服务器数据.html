@@ -1,0 +1,61 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax获取responseText</title>
+	<script type="text/javascript">
+		function loadXMLDoc(){
+			var xmlhttp;
+			if(window.XMLHttpRequest){
+				xmlhttp = new XMLHttpRequest();
+			}
+			else{
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange = function(){
+				if(xmlhttp.readyState==4&&xmlhttp.status==200){
+					document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+				}
+			}
+			xmlhttp.open('GET','/ajax/text.txt','true');
+			xmlhttp.send();
+		}
+	</script>
+</head>
+<body>
+	<div id="myDiv"><h2>使用ajax修改内容</h2></div>
+	<button type="button" onclick="loadXMLDoc()">修改内容</button>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>callback函数实现</title>
+	<script type="text/javascript">
+		var xmlhttp;
+		function loadXMLDoc(url,func){
+			if(window.XMLHttpRequest){
+				xmlhttp = new XMLHttpRequest();
+			}
+			else{
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange = func;
+			xmlhttp.open("GET",url,true);
+			xmlhttp.send();
+		}
+		function myFunc(){
+			loadXMLDoc("/ajax/text.txt",function(){
+				if(xmlhttp.readyState==4 && xmlhttp.status==200){
+					document.getElementById('myDiv').innerHTML = xmlhttp.getAllResponseHeaders()+xmlhttp.responseText;
+				}//注意！！！readyState一定是大写的S,否则页面不显示
+			});
+		}
+	</script>
+</head>
+<body>
+	<div id="myDiv"><h2>用callback函数获取数据</h2></div>
+	<button type="button" onclick="myFunc()">点击获取</button>
+</body>
+</html>
